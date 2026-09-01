@@ -1,0 +1,336 @@
+<!-- ============================================================
+     HTML BOX 2 — Table of Contents
+     #12: SVG icons from Nexdigm CDN (matches live site format)
+     #13: Corrected TOC content for Malaysia K12 report
+     Requires: fi-styles.css + fi-scripts.js
+     ============================================================ -->
+ <!DOCTYPE html>
+     <link rel="stylesheet" href="fi-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="fi-scripts.js" defer></script>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     HTML BOX 2 — Table of Contents
+     Format matches Nexdigm live site (Philippines HUD TOC style):
+     - No bullet • or left bars
+     - Bold headings inside body using fi-toc-heading class
+     - Research Methodology: inline parenthetical list
+     - Market Analysis: sub-items inline in parentheses
+     - Segmentation: 3-level nesting (heading → subheading → items)
+     Requires: fi-styles.css + fi-scripts.js
+     ============================================================ -->
+<!-- ============================================================
+     HTML BOX 2 — Table of Contents
+     Format: matches live Nexdigm site (Philippines HUD TOC structure)
+     - No vertical bars, no custom bullets (list-style: none in CSS)
+     - Bold <strong> for section headings inside body
+     - Research Methodology = single parenthetical, not bullet points
+     - Market Analysis uses inline parenthetical for sub-items
+     - Segmentation uses 3-level nesting with bold parent categories
+     - Requires: fi-styles.css + fi-scripts.js
+     ============================================================ -->
+
+<!-- ============================================================
+     HTML BOX 2 — Table of Contents
+     DESIGN: Numbered chapter cards, section-count badges,
+             Expand/Collapse All controls — inspired by Ken Research
+             but unique to Nexdigm brand palette
+     CONTENT: 100% identical to live demo page (no changes)
+     Requires: fi-styles.css + fi-scripts.js
+     ============================================================ -->
+
+<div class="fi-report-wrap">
+  <div class="fi-section-card">
+    <h2 class="fi-section-title">Table of Contents</h2>
+
+    <!-- ── Controls bar ──────────────────────────────────────── -->
+    <div class="fi-toc-controls">
+      <div class="fi-toc-total">
+        Malaysia K12 Education Market Report
+        <span>8 Chapters</span>
+      </div>
+      <div class="fi-toc-btn-group">
+        <button class="fi-toc-ctrl-btn" onclick="fiExpandAll()">Expand All</button>
+        <button class="fi-toc-ctrl-btn" onclick="fiCollapseAll()">Collapse All</button>
+      </div>
+    </div>
+
+    <!-- ── Ch 01 — Executive Summary ────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">01</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-1.svg" alt="">
+        <span class="fi-ch-title">Executive Summary</span>
+        <span class="fi-ch-count">2 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li><strong>Executive Summary</strong></li>
+          <li><strong>Research Methodology</strong> (Market Definition and Scope, Malaysia K12 Education Taxonomy, School Type and Service Channel Classification, Market Sizing Framework, Top-Down Analysis, Bottom-Up Analysis, Enrolment Data and School Census Assessment, Household Expenditure Estimation, Primary Industry Interviews, Data Triangulation, Forecasting Framework, Scenario Analysis, Assumptions and Limitations)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 02 — Market Overview ──────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">02</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-2.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Overview</span>
+        <span class="fi-ch-count">7 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>Definition and Scope</li>
+          <li>Malaysia K12 Education System Structure and Evolution</li>
+          <li>K12 Education Value Chain Analysis</li>
+          <li>Malaysia K12 Education Supply Chain Analysis</li>
+          <li>Industry Ecosystem and Stakeholder Map (Kementerian Pendidikan Malaysia, MARA, BPSS, Malaysian Examinations Council, EdTech Operators)</li>
+          <li>Macroeconomic Context (GDP, Household Income, Demographic Trends, Urbanisation Rate, Mobile Penetration)</li>
+          <li>Education Expenditure and Funding Flow Analysis (Federal Budget, State Allocation, Household Out-of-Pocket)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 03 — Market Analysis ──────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">03</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/macroeconomic-factors.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Analysis</span>
+        <span class="fi-ch-count">8 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>Growth Drivers (Government Education Investment Under Malaysia MADANI &amp; Budget 2025, Rising Private School Enrolment and Premium Education Demand, EdTech Adoption Accelerated by Digital Infrastructure Roll-Out, Examination Culture and High-Stakes Assessment Driving Tuition Demand, Expanding Expatriate Population and MM2H Programme)</li>
+          <li>Market Challenges (Urban–Rural Digital Divide and Infrastructure Inequality, Teacher Shortage and Qualified Educator Supply Constraints, Regulatory Complexity in Private and International School Licensing, Fee Sensitivity and High Competition in Supplementary Tuition)</li>
+          <li>Market Opportunities (AI-Driven Personalised Learning and Adaptive EdTech Platforms, Premium International Curriculum Expansion in Klang Valley and Johor, Government EdTech Procurement and School Digitalisation Contracts, SPM and PT3 Digital Coaching Migration)</li>
+          <li>Market Trends (AI and Adaptive Learning Adoption, Mobile-First Supplementary Education, Bilingual and International Curriculum Migration, Blended Learning in National Schools Post-COVID, School ERP and Admin Platform Consolidation)</li>
+          <li>Regulatory and Standards Landscape (Education Act 1996, KSSM and KPPM Curriculum Frameworks, BPSS Private School Licensing, International School Fee Governance 2023, DigitalEDU Policy, Malaysian Examinations Council Oversight)</li>
+          <li>SWOT Analysis</li>
+          <li>Porter's Five Forces Analysis</li>
+          <li>PESTLE Analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 04 — Market Size ───────────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">04</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-3.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Size (2020–2025)</span>
+        <span class="fi-ch-count">7 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>By Market Value (2020–2025)</li>
+          <li>By Student Enrolment Volume (2020–2025)</li>
+          <li>By School Segment Revenue (2020–2025)</li>
+          <li>By Government vs Private vs Supplementary Expenditure (2020–2025)</li>
+          <li>By EdTech Platform Subscription Revenue (2020–2025)</li>
+          <li>By Average Fee Per Student — Government, Private, International (2020–2025)</li>
+          <li>Impact of COVID-19 on K12 Education Service Delivery and Recovery Trajectory (2020–2022)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 05 — Segmentation ──────────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">05</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-5.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Segmentation</span>
+        <span class="fi-ch-count">4 Segments</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+
+          <li><strong>By School Type (In Value %)</strong></li>
+          <li class="fi-toc-heading"><strong>Government / National Schools</strong>
+            <ul class="fi-toc-l2">
+              <li>Sekolah Kebangsaan (SK)</li>
+              <li>Sekolah Menengah Kebangsaan (SMK)</li>
+              <li>Fully Residential Schools (SBP)</li>
+              <li>MRSM (MARA Junior Science Colleges)</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>National-Type Schools</strong>
+            <ul class="fi-toc-l2">
+              <li>SJKC (Chinese-medium Primary)</li>
+              <li>SJKT (Tamil-medium Primary)</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>Private Schools</strong>
+            <ul class="fi-toc-l2">
+              <li>Independent Chinese Schools</li>
+              <li>Islamic Private Schools</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>International Schools</strong>
+            <ul class="fi-toc-l2">
+              <li>Cambridge (IGCSE / A-Level) Schools</li>
+              <li>International Baccalaureate (IB) Schools</li>
+              <li>American Curriculum Schools</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>Supplementary Education</strong>
+            <ul class="fi-toc-l2">
+              <li>Private Tuition Centres</li>
+              <li>Online Learning Platforms</li>
+              <li>Retail Franchise Tuition (Kumon, Brain Lab)</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>EdTech Platforms and Digital Learning Services</strong>
+            <ul class="fi-toc-l2">
+              <li>Learning Management Systems (LMS)</li>
+              <li>Adaptive Learning Platforms</li>
+              <li>AI-Assisted Tutoring</li>
+            </ul>
+          </li>
+
+          <li style="margin-top:10px;"><strong>By Service Delivery Channel (In Value %)</strong></li>
+          <li class="fi-toc-heading"><strong>Physical Classroom (On-Premise)</strong>
+            <ul class="fi-toc-l2">
+              <li>Government School Classrooms</li>
+              <li>Private Tuition Centres</li>
+              <li>International School Campuses</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>Online / LMS-Based Delivery</strong>
+            <ul class="fi-toc-l2">
+              <li>DELIMa (KPM Platform)</li>
+              <li>Edvento, iLeap</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>Mobile Application</strong>
+            <ul class="fi-toc-l2">
+              <li>Pandai (Axiata Group)</li>
+              <li>Quipper Malaysia</li>
+            </ul>
+          </li>
+          <li><strong>Hybrid (Blended Learning)</strong></li>
+          <li class="fi-toc-heading"><strong>Retail Franchise Tuition Centres</strong>
+            <ul class="fi-toc-l2">
+              <li>Kumon Malaysia (700+ centres)</li>
+              <li>Brain Lab, Twinkle Star Learning Centre</li>
+            </ul>
+          </li>
+
+          <li style="margin-top:10px;"><strong>By Education Level (In Value %)</strong></li>
+          <li><strong>Primary Level</strong> (Year 1–6 / Age 7–12)</li>
+          <li><strong>Lower Secondary</strong> (Form 1–3 / Age 13–15 / PT3 Preparation)</li>
+          <li class="fi-toc-heading"><strong>Upper Secondary</strong> (Form 4–5 / Age 16–17 / SPM Preparation)
+            <ul class="fi-toc-l2">
+              <li>SPM Core Subject Coaching</li>
+              <li>Additional Mathematics Tuition</li>
+              <li>Sciences Stream Coaching</li>
+            </ul>
+          </li>
+          <li class="fi-toc-heading"><strong>Pre-University / Sixth Form</strong>
+            <ul class="fi-toc-l2">
+              <li>STPM (Sijil Tinggi Persekolahan Malaysia)</li>
+              <li>A-Level</li>
+              <li>Foundation Programmes</li>
+            </ul>
+          </li>
+
+          <li style="margin-top:10px;"><strong>By Subject Category (In Value %)</strong></li>
+          <li>Mathematics and Additional Mathematics</li>
+          <li>Sciences (Physics, Chemistry, Biology)</li>
+          <li>Bahasa Melayu and English Language</li>
+          <li>Humanities and Social Sciences</li>
+          <li>ICT and Computer Science</li>
+
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 06 — Competitive Analysis ─────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">06</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-4.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Competitive Analysis</span>
+        <span class="fi-ch-count">11 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>Market Share of Major Players</li>
+          <li>Government School Segment Dominance (Kementerian Pendidikan Malaysia)</li>
+          <li>Private and International School Competition</li>
+          <li>EdTech Platform Market Share</li>
+          <li>Supplementary Tuition Centre Competition</li>
+          <li>Cross Comparison Parameters (School Segment Portfolio Breadth, Curriculum Accreditation Depth, EdTech and Digital Platform Capability, Geographic Reach Across Malaysia States, OEM and Government Partnership Penetration, SPM/PT3 Examination Performance Track Record, Mobile App and LMS Platform Coverage, International Student Intake Capability)</li>
+          <li><strong>Competitive Benchmarking</strong> (Student Enrolment Capacity, Annual Revenue, Annual Fee Range, Curriculum Breadth, Digital Platform Maturity, Geographic State Coverage)</li>
+          <li>SWOT Analysis of Major Players</li>
+          <li>Detailed Profiles of Major Companies
+            <ul class="fi-toc-l2">
+              <li>Taylor's Education Group</li>
+              <li>HELP Education Services Sdn Bhd</li>
+              <li>Beaconhouse Group</li>
+              <li>Axiata Group Berhad — Pandai Platform</li>
+              <li>Kumon Institute of Education Co., Ltd.</li>
+              <li>Other Significant Players (Garden International School, ELC International School, Quipper Malaysia, iLeap, Tenby Schools)</li>
+            </ul>
+          </li>
+          <li>Recent Mergers, Acquisitions and Partnerships</li>
+          <li>New Entrant and Disruptor Analysis (AI Tutoring Startups, Cross-Border EdTech Platforms)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 07 — Consumer Analysis ────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">07</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-6.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Consumer Analysis</span>
+        <span class="fi-ch-count">7 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>Student and Parent Demographic Profile (Household Income, Ethnicity, Urban/Rural Split)</li>
+          <li>Purchase Behaviour and Decision Drivers (Examination Outcomes, Peer Influence, Platform Usability, Fee Sensitivity)</li>
+          <li>Examination Culture and Parental Investment Behaviour in SPM and PT3 Preparation</li>
+          <li>Digital Device Adoption and EdTech Platform Engagement Among K12 Students</li>
+          <li>Digital and Online Behaviour Analysis (LMS Usage, App Engagement, Social Learning Patterns)</li>
+          <li>Buyer Pain Points (Fee Escalation, Teacher Quality, Curriculum Mismatch, Platform Reliability)</li>
+          <li>Technology Adoption Assessment Among Parent and Student Segments</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ── Ch 08 — Future Size ───────────────────────────────── -->
+    <div class="fi-ch">
+      <div class="fi-ch-hdr" onclick="fiToggleCh(this)">
+        <span class="fi-ch-num">08</span>
+        <img class="fi-ch-icon" src="https://www.nexdigm.com/market-research/wp-content/uploads/2025/03/tab-icon-7.svg" alt="">
+        <span class="fi-ch-title">Malaysia K12 Education Market Future Size (2026–2030)</span>
+        <span class="fi-ch-count">7 Sections</span>
+        <span class="fi-ch-chevron">▼</span>
+      </div>
+      <div class="fi-ch-body">
+        <ul class="fi-toc-l1">
+          <li>By Market Value (2026–2030)</li>
+          <li>By Student Enrolment Volume (2026–2030)</li>
+          <li>By School Segment Revenue (2026–2030)</li>
+          <li>By Service Delivery Channel (2026–2030)</li>
+          <li>By Education Level (2026–2030)</li>
+          <li>Optimistic, Base and Pessimistic Scenario Analysis</li>
+          <li>Key Forecast Assumptions and Sensitivity Analysis</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>

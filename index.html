@@ -1,0 +1,374 @@
+<!-- ============================================================
+     HTML BOX 1 — Market Overview
+     All 13 client feedback points applied
+     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
+     ============================================================ -->
+   <!DOCTYPE html>
+     <link rel="stylesheet" href="fi-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="fi-scripts.js" defer></script>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
+     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
+     ============================================================ -->
+
+<!-- ============================================================
+     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
+     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
+     ============================================================ -->
+
+<div class="fi-report-wrap">
+
+  <!-- ══ TALK TO US — blinking CTA, top of content (#6) ══════ -->
+  <div class="fi-cta-topbar">
+    <span class="fi-cta-topbar-text">Get the complete Malaysia K12 Education Market report — full data, competitive intelligence &amp; forecasts.</span>
+    <a href="#talk-to-us" class="fi-cta-topbar-btn">📞 Talk to Us</a>
+  </div>
+
+  <!-- ══ A. MARKET OVERVIEW ══════════════════════════════════ -->
+  <div class="fi-section-card">
+    <h2 class="fi-section-title">Market Overview</h2>
+    <p>The Malaysia K12 Education Market encompasses government and private school infrastructure, tuition services, educational technology platforms, and supplementary learning services across primary and secondary levels. Malaysia's population of approximately 33.6 million (Department of Statistics Malaysia, 2024) includes approximately 5.2 million school-age children enrolled in national, national-type, and independent school systems, sustaining structural demand across the K12 value chain. Malaysia's GDP expanded at 5.1% in 2024, with household expenditure on education increasing at a compound rate of approximately 6.3% per annum since 2020 (World Bank Malaysia Economic Monitor, 2024). The government allocated MYR ~X.X billion to the Ministry of Education under Budget 2025, representing approximately 15.6% of total federal expenditure and reinforcing sustained public investment in the K12 sector.</p>
+
+    <!-- 3 stat boxes -->
+    <div class="fi-stat-grid">
+      <div class="fi-stat-box">
+        <span class="fi-stat-val">~5.2 Million</span>
+        <div class="fi-stat-lbl">K12 Enrolled Students, 2024<br><em>Ministry of Education Malaysia</em></div>
+      </div>
+      <div class="fi-stat-box">
+        <span class="fi-stat-val">~X.X%</span>
+        <div class="fi-stat-lbl">Forecast Market CAGR 2025–2030<br><em>Nexdigm Analysis</em></div>
+      </div>
+      <div class="fi-stat-box">
+        <span class="fi-stat-val">MYR ~X.X Bn</span>
+        <div class="fi-stat-lbl">Govt Education Budget, 2025<br><em>Ministry of Finance Malaysia</em></div>
+      </div>
+    </div>
+
+    <!-- Market Size chart — "Full Report" text removed (#9) -->
+    <div class="fi-chart-wrap">
+      <div class="fi-chart-title">Malaysia K12 Education Market Size — Historical &amp; Forecast</div>
+      <canvas id="fi-chartMarketSize" class="fi-chart-canvas"></canvas>
+    </div>
+  </div>
+
+  <!-- ══ B. SEGMENTATION — BY SCHOOL TYPE ════════════════════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Market Segmentation — By School Type</h3>
+
+    <!-- #8: Intro paragraph above segmentation -->
+    <div class="fi-seg-intro">
+      Malaysia's K12 education ecosystem is structured across a diverse mix of government-funded national schools, private and international institutions, supplementary tuition providers, and emerging EdTech platforms. Understanding this segmentation is critical for identifying investment opportunities, competitive positioning, and demand patterns across the student population. The market is characterised by high government participation at primary level, growing private school uptake among upper-income households, and a structurally elevated supplementary tuition spend driven by Malaysia's examination culture.
+    </div>
+
+    <div class="fi-seg-grid">
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Government / National Schools</div>
+        <div class="fi-seg-body"><ul>
+          <li>Sekolah Kebangsaan (SK)</li>
+          <li>Sekolah Menengah Kebangsaan (SMK)</li>
+          <li>Fully Residential Schools (SBP)</li>
+          <li>MRSM (MARA Junior Science Colleges)</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Private / International Schools</div>
+        <div class="fi-seg-body"><ul>
+          <li>Independent Chinese Schools (SJKC)</li>
+          <li>International Schools (Cambridge, IB)</li>
+          <li>Islamic Private Schools</li>
+          <li>Homeschool &amp; Micro-Schools</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Supplementary Education</div>
+        <div class="fi-seg-body"><ul>
+          <li>Tuition Centres</li>
+          <li>Online Learning Platforms</li>
+          <li>Test-Prep &amp; Exam Coaching</li>
+          <li>Language Enrichment Centres</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">EdTech &amp; Digital Learning</div>
+        <div class="fi-seg-body"><ul>
+          <li>Learning Management Systems (LMS)</li>
+          <li>Adaptive Learning Platforms</li>
+          <li>School ERP &amp; Admin Software</li>
+          <li>AI-Assisted Tutoring</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <p>The <strong>Government and National School segment</strong> represents the dominant category, accounting for an estimated 62% of total enrolment in 2024 (Ministry of Education Malaysia, EMIS 2024), underpinned by the constitutional mandate for free primary education across 7,829 national primary schools and 2,418 secondary schools.</p>
+
+    <div class="fi-chart-wrap">
+      <div class="fi-chart-title">By School Type (in Value %)</div>
+      <canvas id="fi-chartSchoolType" class="fi-chart-canvas" style="max-height:260px;"></canvas>
+    </div>
+  </div>
+
+  <!-- ══ C. SEGMENTATION — BY DISTRIBUTION CHANNEL ═══════════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Market Segmentation — By Distribution Channel</h3>
+
+    <!-- #8: Intro paragraph above segmentation -->
+    <div class="fi-seg-intro">
+      Service delivery in the Malaysia K12 market spans traditional on-premise classroom instruction to rapidly growing digital and mobile platforms. Physical delivery continues to dominate due to regulatory accreditation requirements under the Education Act 1996, while the EdTech and online channel is expanding at the fastest rate — driven by Malaysia's 89.6% mobile internet penetration and the government's DELIMa platform roll-out. Analysing delivery channel share enables operators to identify underserved segments and channel migration trends.
+    </div>
+
+    <div class="fi-seg-grid">
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Physical Classroom</div>
+        <div class="fi-seg-body"><ul>
+          <li>Government School Classrooms</li>
+          <li>Private Tuition Centres</li>
+          <li>International School Campuses</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Online / Hybrid Platforms</div>
+        <div class="fi-seg-body"><ul>
+          <li>KPM DELIMa Google Workspace</li>
+          <li>Edvento, iLeap, Pandai</li>
+          <li>Frog VLE (Ministry Platform)</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Mobile Application</div>
+        <div class="fi-seg-body"><ul>
+          <li>Pandai (Axiata Group)</li>
+          <li>Quipper Malaysia</li>
+          <li>EduAdvisor Platforms</li>
+        </ul></div>
+      </div>
+      <div class="fi-seg-box">
+        <div class="fi-seg-head">Retail &amp; Franchise Tuition</div>
+        <div class="fi-seg-body"><ul>
+          <li>Kumon Malaysia</li>
+          <li>Twinkle Star Learning Centre</li>
+          <li>Brain Lab, CikgooStar</li>
+        </ul></div>
+      </div>
+    </div>
+
+    <p><strong>Physical classroom delivery</strong> accounts for approximately 71% of total market revenue in 2025, driven by regulatory requirements under the Education Act 1996. Online and hybrid delivery is the fastest-growing channel, with the DELIMa platform reaching over 5 million registered users by 2024.</p>
+
+    <div class="fi-chart-wrap">
+      <div class="fi-chart-title">By Service Delivery Channel (in Value %)</div>
+      <canvas id="fi-chartChannel" class="fi-chart-canvas" style="max-height:260px;"></canvas>
+    </div>
+  </div>
+
+  <!-- ══ D. COMPETITIVE LANDSCAPE ════════════════════════════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Competitive Landscape</h3>
+    <p>The Malaysia K12 Education Market exhibits a bifurcated competitive structure. The formal schooling segment is dominated by Kementerian Pendidikan Malaysia, while the supplementary, private, and EdTech segments host a fragmented mix of domestic operators, regional platforms, and multinational franchise networks. Competition is primarily driven by examination performance outcomes, curriculum accreditation, teacher quality, digital platform capability, and geographic reach across Malaysia's 13 states.</p>
+
+    <!-- Competitive table — Revenue column added (#1), ~ cells clean -->
+    <div class="fi-table-scroll">
+      <table class="fi-comp-table">
+        <thead>
+          <tr>
+            <th>Company</th>
+            <th>Est. Year</th>
+            <th>Headquarters</th>
+            <th>Annual Revenue</th>
+            <th>School Segment Focus</th>
+            <th>Curriculum Alignment</th>
+            <th>EdTech Platform</th>
+            <th>Digital Learning</th>
+            <th>Geographic Reach</th>
+            <th>Intl Accreditation</th>
+            <th>Govt / OEM Partnership</th>
+            <th>Market Positioning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Taylor's Education Group</strong></td>
+            <td>1969</td><td>Subang Jaya, MY</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+          </tr>
+          <tr>
+            <td><strong>HELP Education Services Sdn Bhd</strong></td>
+            <td>1986</td><td>Kuala Lumpur, MY</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+          </tr>
+          <tr>
+            <td><strong>Beaconhouse Group</strong></td>
+            <td>1975</td><td>Lahore / KL</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+          </tr>
+          <tr>
+            <td><strong>Axiata Group Berhad (Pandai)</strong></td>
+            <td>2008</td><td>Kuala Lumpur, MY</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+          </tr>
+          <tr>
+            <td><strong>Kumon Institute of Education</strong></td>
+            <td>1958</td><td>Osaka, Japan</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+            <td class="fi-masked">~</td><td class="fi-masked">~</td><td class="fi-masked">~</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="fi-comp-note">&#128274; Detailed cross-comparison data — including Annual Revenue, School Segment Focus, Curriculum Alignment, Digital Platform Capability, and Geographic Reach — are available in the full report. <a href="#talk-to-us" class="fi-cta-blink">Talk to Us</a> to access complete competitive intelligence.</p>
+  </div>
+
+  <!-- ══ E. GROWTH DRIVERS ════════════════════════════════════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Market Analysis — Growth Drivers</h3>
+    <div class="fi-dc-grid">
+      <div class="fi-driver-box">
+        <h4 class="fi-driver-title">Government Education Investment Under Malaysia MADANI &amp; Budget 2025</h4>
+        <p>The Malaysia MADANI framework and Budget 2025 collectively allocated MYR ~X.X billion to the Ministry of Education, with MYR ~X.X billion earmarked for the DigitalEDU initiative. These investments directly expand the addressable market for EdTech platforms, school ERP systems, and curriculum content providers across Malaysia's 10,247 public school premises.</p>
+      </div>
+      <div class="fi-driver-box">
+        <h4 class="fi-driver-title">Rising Private School Enrolment and Premium Education Demand</h4>
+        <p>Private and international school enrolment has grown at approximately 8.4% per annum between 2020 and 2024 (MIDA 2024), with registered international schools rising from 198 to 241 in the same period. Expatriate demand sustained by Malaysia's MM2H programme has further strengthened international school fee income across the Klang Valley and Iskandar Malaysia corridors.</p>
+      </div>
+      <div class="fi-driver-box">
+        <h4 class="fi-driver-title">EdTech Adoption Accelerated by Digital Infrastructure Roll-Out</h4>
+        <p>The DELIMa platform, launched in 2020 in partnership with Google Workspace for Education, reached over 5.1 million registered users and 420,000 teachers by December 2024. Malaysia's mobile internet penetration of 89.6% (MCMC, 2024) supports commercial EdTech subscription uptake across platforms including Pandai, iLeap, and Quipper.</p>
+      </div>
+      <div class="fi-driver-box">
+        <h4 class="fi-driver-title">Examination Culture and High-Stakes Assessment Driving Tuition Demand</h4>
+        <p>An estimated 72% of Malaysian students attend private tuition in at least one subject (Malaysian Examinations Council Survey, 2023), representing one of the highest participation rates in Southeast Asia. SPM enrolment reached 448,722 candidates in 2024, creating a consistent annual demand cycle for exam-focused coaching and test-preparation platforms.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ F. CHALLENGES — 2 boxes only ════════════════════════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Market Analysis — Market Challenges</h3>
+    <div class="fi-dc-grid">
+      <div class="fi-challenge-box">
+        <h4 class="fi-driver-title">Urban–Rural Digital Divide</h4>
+        <p>Approximately 15.4% of public schools in Sabah and Sarawak lacked reliable broadband as of 2024 (MCMC 2024), constraining EdTech deployment and limiting addressable market expansion for digital operators in rural and remote regions of Malaysia.</p>
+      </div>
+      <div class="fi-challenge-box">
+        <h4 class="fi-driver-title">Teacher Shortage &amp; Supply Constraints</h4>
+        <p>The Ministry of Education reported a shortage of approximately 12,000 qualified secondary teachers in 2024. IPG Malaysia produced approximately 10,400 graduates annually — insufficient to close the supply gap, intensifying competition for qualified educators across public and private institutions.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ G. OPPORTUNITIES — scroll-animated sequential (#3) ════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Market Analysis — Market Opportunities</h3>
+    <p>Three high-growth opportunity themes are converging in the Malaysia K12 market through 2030, each supported by government policy, demographic trends, and digital infrastructure maturation. As users scroll through these opportunities, each is highlighted sequentially to reflect the prioritisation of investment readiness.</p>
+
+    <div class="fi-opp-box">
+      <h4 class="fi-driver-title">AI-Driven Personalised Learning and Adaptive EdTech Platforms</h4>
+      <p>Malaysia's National Artificial Intelligence Roadmap (AI-Rmap 2021–2025) identified education as a priority sector, with MDEC allocating MYR 300 million toward AI curriculum integration and educator upskilling. Malaysia's school-age cohort of approximately 5.2 million students provides a substantial commercial base for adaptive learning platforms, with SPM and PT3 exam preparation spending migrating to mobile-first digital services.</p>
+    </div>
+    <div class="fi-opp-box">
+      <h4 class="fi-driver-title">Premium International Curriculum Expansion in Klang Valley and Johor</h4>
+      <p>The number of registered international schools in Johor grew from 22 in 2020 to 31 in 2024 (Ministry of Education Malaysia, BPSS 2024), while Kuala Lumpur and Selangor collectively host over 160 international school campuses. Malaysia's MM2H programme revision in 2024 is expected to increase inbound expatriate families by an estimated 15,000 households over 2025–2027 (Tourism Malaysia, 2024), each representing premium school fee income.</p>
+    </div>
+    <div class="fi-opp-box">
+      <h4 class="fi-driver-title">Government EdTech Procurement and School Digitalisation Contracts</h4>
+      <p>The Ministry of Education's DigitalEDU initiative under Budget 2025, backed by MYR ~X.X billion in committed allocation, creates direct procurement opportunities for device manufacturers, LMS providers, and cloud infrastructure operators. The government's target to equip 1 million students with devices generates downstream demand for curriculum-aligned content platforms across Malaysia's 10,247 public school premises.</p>
+    </div>
+  </div>
+
+  <!-- ══ H. RESEARCH METHODOLOGY — 3-phase card design (#4) ════ -->
+  <div class="fi-section-card">
+    <h3 class="fi-sub-title">Research Methodology</h3>
+
+    <div class="fi-method-wrap">
+      <!-- Phase stepper tabs -->
+      <div class="fi-phase-tabs">
+        <button class="fi-phase-tab" onclick="fiPhaseTab(this, 0)">
+          <span class="fi-phase-num-badge">01</span>
+          <span>Desk Research</span>
+        </button>
+        <span class="fi-phase-connector">›</span>
+        <button class="fi-phase-tab" onclick="fiPhaseTab(this, 1)">
+          <span class="fi-phase-num-badge">02</span>
+          <span>Primary Research</span>
+        </button>
+        <span class="fi-phase-connector">›</span>
+        <button class="fi-phase-tab" onclick="fiPhaseTab(this, 2)">
+          <span class="fi-phase-num-badge">03</span>
+          <span>Validation &amp; Synthesis</span>
+        </button>
+      </div>
+
+      <!-- Phase cards — 3 always visible, tab highlights active card -->
+      <div class="fi-phase-cards">
+        <div class="fi-phase-card" id="fi-phcard-0">
+          <div class="fi-phase-card-head">
+            <div class="fi-phase-icon">🔍</div>
+            <h4>Identification of Key Variables</h4>
+          </div>
+          <ul class="fi-phase-list">
+            <li>Mapping the Malaysia K12 education ecosystem and stakeholder landscape</li>
+            <li>Reviewing Ministry of Education annual reports and school census data</li>
+            <li>Assessing household education expenditure variables and fee structures</li>
+            <li>Identifying digital adoption indicators across primary and secondary levels</li>
+          </ul>
+        </div>
+        <div class="fi-phase-card" id="fi-phcard-1">
+          <div class="fi-phase-card-head">
+            <div class="fi-phase-icon">🎯</div>
+            <h4>Market Analysis &amp; Construction</h4>
+          </div>
+          <ul class="fi-phase-list">
+            <li>Interviewing K12 school operators, tuition centre proprietors, and EdTech founders</li>
+            <li>Consulting government education officials on policy frameworks and budgets</li>
+            <li>Speaking with curriculum developers and digital platform executives</li>
+            <li>Validating top-down and bottom-up market sizing assumptions via primary data</li>
+          </ul>
+        </div>
+        <div class="fi-phase-card" id="fi-phcard-2">
+          <div class="fi-phase-card-head">
+            <div class="fi-phase-icon">📋</div>
+            <h4>Validation and Triangulation</h4>
+          </div>
+          <ul class="fi-phase-list">
+            <li>Triangulating findings against Ministry of Education, World Bank, and MCMC data</li>
+            <li>Reconciling supply-side school revenue with demand-side enrolment estimates</li>
+            <li>Cross-checking EdTech subscription revenue against platform user data</li>
+            <li>Normalising forecasts across optimistic, base, and pessimistic scenarios</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ I. RELATED TAGS — clickable ══════════════════════════ -->
+  <div class="fi-section-card" style="padding-bottom:20px;">
+    <h3 class="fi-sub-title" style="margin-top:0;">Related Tags</h3>
+    <div class="fi-tag-row">
+      <a href="#" class="fi-tag">Malaysia Education Blueprint</a>
+      <a href="#" class="fi-tag">K12 EdTech</a>
+      <a href="#" class="fi-tag">SPM Examination</a>
+      <a href="#" class="fi-tag">International Schools</a>
+      <a href="#" class="fi-tag">DigitalEDU Initiative</a>
+      <a href="#" class="fi-tag">KSSM Curriculum</a>
+      <a href="#" class="fi-tag">Tuition Centres</a>
+      <a href="#" class="fi-tag">Adaptive Learning</a>
+      <a href="#" class="fi-tag">DELIMa Platform</a>
+      <a href="#" class="fi-tag">MADANI Framework</a>
+      <a href="#" class="fi-tag">Supplementary Education</a>
+      <a href="#" class="fi-tag">Private School Malaysia</a>
+    </div>
+  </div>
+
+</div><!-- /fi-report-wrap -->

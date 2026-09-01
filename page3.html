@@ -1,0 +1,155 @@
+<!-- ============================================================
+     HTML BOX 3 — Frequently Asked Questions
+     Paste this into WP Admin HTML box for "FAQ"
+     Requires: fi-styles.css + fi-scripts.js loaded on the page
+     ============================================================ -->
+<!DOCTYPE html>
+     <link rel="stylesheet" href="fi-styles.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="fi-scripts.js" defer></script>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- ============================================================
+     HTML BOX 3 — FAQ   |  Enhanced design (#5) with Q badges
+     Requires: fi-styles.css + fi-scripts.js
+     ============================================================ -->
+
+<div class="fi-report-wrap">
+  <div class="fi-section-card">
+    <h2 class="fi-section-title">Frequently Asked Questions</h2>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 01</span>
+        <span class="fi-faq-question">What is the forecast period covered by this report?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>This report covers a forecast period of <strong>2026 to 2030</strong>, with a base year of 2025 and historical data spanning 2020 to 2025. The historical period encompasses the COVID-19 disruption cycle and recovery trajectory, providing a rigorous baseline for forward-looking projections. The forecast horizon aligns with the completion of Malaysia's Education Blueprint 2013–2025 and the transition into the forthcoming national education policy framework under the MADANI economic agenda. Scenario-based projections under optimistic, base, and pessimistic assumptions are provided in Chapter 8.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 02</span>
+        <span class="fi-faq-question">What is the estimated market size and growth rate of the Malaysia K12 Education Market?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>The Malaysia K12 Education Market is projected to expand at a compound annual growth rate of approximately <strong>~X.X% between 2025 and 2030</strong>, driven by government digitalisation investment, rising private school enrolment, and the accelerating migration of supplementary learning to digital platforms. The Ministry of Education's Budget 2025 allocation provides a stable expenditure anchor for the near-term forecast. Market scale across the EdTech subsegment is expected to grow at a meaningfully higher rate through the forecast period. Full market value figures are available in the complete report.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 03</span>
+        <span class="fi-faq-question">Which school segment is dominant in the Malaysia K12 Education Market and why?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>The <strong>Government and National School segment</strong> is the dominant category, accounting for approximately 62% of total K12 enrolment in 2024 (Ministry of Education Malaysia, EMIS 2024). This dominance is structurally anchored by the constitutional mandate for free primary education under the Education Act 1996, universal geographic coverage through 7,829 national primary schools and 2,418 secondary schools, and the comprehensive funding support of the Malaysia Education Blueprint 2013–2025. While private and international schools account for a smaller share of enrolment, they generate disproportionately higher per-student revenue, with annual fees ranging from MYR 25,000 to MYR 120,000 per student in international school settings.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 04</span>
+        <span class="fi-faq-question">Which service delivery channel leads the Malaysia K12 Education Market and why?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p><strong>Physical classroom delivery</strong> remains the dominant service channel, accounting for approximately 71% of total market revenue in 2025. This dominance is maintained by regulatory requirements under the Education Act 1996 for formal schooling accreditation, parental preference for supervised face-to-face instruction, and the established scale of Malaysia's 10,247 public school premises nationwide. However, online and hybrid delivery is the fastest-growing channel, with the DELIMa platform recording over 5.1 million registered users by December 2024. Malaysia's mobile internet penetration rate of 89.6% (MCMC, 2024) is progressively enabling supplementary tuition to migrate toward mobile-first platforms.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 05</span>
+        <span class="fi-faq-question">Who are the key companies profiled in this report?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>The report profiles five primary companies in its competitive analysis chapter: <strong>Taylor's Education Group</strong>, <strong>HELP Education Services Sdn Bhd</strong>, <strong>Beaconhouse Group</strong>, <strong>Axiata Group Berhad (Pandai)</strong>, and <strong>Kumon Institute of Education Co., Ltd.</strong> (with over 700 franchise tuition centres across Malaysia). Additional significant players covered include Garden International School, ELC International School, Tenby Schools, Quipper Malaysia, and iLeap. Company profiles include business model, segment focus, curriculum accreditations, geographic reach, digital platform capability, competitive positioning, and annual revenue estimates.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 06</span>
+        <span class="fi-faq-question">What are the primary growth drivers for the Malaysia K12 Education Market?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Four primary growth drivers underpin the market through the forecast period. First, sustained government capital allocation provides expenditure continuity across school infrastructure, teacher development, and the DigitalEDU initiative. Second, private and international school enrolment growth of approximately 8.4% per annum between 2020 and 2024 (MIDA, 2024) reflects rising household income and demand for globally recognised qualifications. Third, Malaysia's mobile internet penetration of 89.6% (MCMC, 2024) and the DELIMa platform's 5.1 million registered users indicate structural readiness for EdTech scale-up. Fourth, Malaysia's high examination participation culture — with an estimated 72% of students attending private tuition — sustains recurring supplementary education demand throughout the academic year.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 07</span>
+        <span class="fi-faq-question">What are the main market challenges facing the Malaysia K12 Education sector?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Three principal challenges constrain market growth within the forecast period. The urban–rural digital divide remains structurally significant, with approximately 15.4% of public schools in Sabah and Sarawak lacking reliable broadband connectivity as of 2024 (MCMC, 2024). Teacher supply constraints represent a second major challenge: the Ministry of Education reported a shortage of approximately 12,000 qualified secondary teachers in 2024, with IPG Malaysia producing approximately 10,400 graduates annually — insufficient to close the supply gap. Regulatory complexity in private school licensing, including BPSS approval timelines of 12–24 months and ministerial oversight of fee revisions exceeding 10% per year, introduces operational uncertainty for foreign education groups.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 08</span>
+        <span class="fi-faq-question">What opportunities exist for investors or new entrants in the Malaysia K12 Education Market?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Three convergent opportunity themes are most compelling. AI-driven adaptive learning represents the highest near-term growth vector, supported by Malaysia's National AI Roadmap and a MYR 300 million allocation for AI in education under MDEC. Premium international school expansion in the Klang Valley and Iskandar Malaysia corridors offers high-margin recurring fee income, with MM2H programme revisions expected to bring approximately 15,000 new expatriate households by 2027 (Tourism Malaysia, 2024). Government EdTech procurement under the DigitalEDU initiative creates direct B2G revenue opportunities for device manufacturers, LMS providers, and content platform operators.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 09</span>
+        <span class="fi-faq-question">What role does the Malaysia Education Blueprint 2013–2025 play in shaping this market?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>The Malaysia Education Blueprint 2013–2025, administered by Kementerian Pendidikan Malaysia (KPM), is the principal policy framework governing structural investment, curriculum reform, and digital transformation across the public K12 system. Phase 3 of the Blueprint (2021–2025) prioritises 100% broadband connectivity for public schools, the nationwide deployment of the DELIMa digital learning platform, and the transition to the KSSM and KSSR revised curriculum frameworks. Cumulative Blueprint investment has exceeded MYR 50 billion, funding over 7,829 national primary school upgrades, teacher competency development, and digital device programmes. The completion of the Blueprint in 2025 and the expected MADANI successor framework will be the most significant policy event shaping investment parameters within the 2026–2030 forecast window.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 10</span>
+        <span class="fi-faq-question">How does Malaysia's examination culture impact the K12 market?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Malaysia's examination-centric education culture is a structural and recurring revenue driver for the supplementary education subsegment. An estimated 72% of Malaysian K12 students attend private tuition in at least one subject (Malaysian Examinations Council Survey, 2023). SPM enrolled 448,722 candidates in 2024 (Malaysian Examinations Council, 2025), creating a concentrated annual revenue cycle for operators specialising in Form 4–5 examination coaching. Franchise tuition operators including Kumon Malaysia, Brain Lab, and Twinkle Star Learning Centre, as well as digital platforms such as Pandai and iLeap, have commercially structured their product offerings around SPM, PT3, and KSSM examination cycles.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 11</span>
+        <span class="fi-faq-question">Does this report include consumer and end-user analysis?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Yes. Chapter 7 provides a dedicated consumer analysis covering the demographic profile of Malaysian K12 students and their parents, segmented by household income band, ethnicity, and urban/rural geography using data from the Department of Statistics Malaysia Household Income Survey 2022, which recorded a national median monthly household income of MYR 6,338. The chapter analyses purchase behaviour and decision drivers in supplementary education purchasing, including the relative weighting of academic outcome expectations, platform usability, peer recommendation, and fee sensitivity.</p>
+      </div>
+    </div>
+
+    <div class="fi-faq-item">
+      <div class="fi-faq-q" onclick="fiToggleFaq(this)">
+        <span class="fi-faq-badge">Q 12</span>
+        <span class="fi-faq-question">What customisation options are available for this report?</span>
+        <span class="fi-faq-icon">+</span>
+      </div>
+      <div class="fi-faq-ans">
+        <p>Nexdigm Market Research offers comprehensive customisation options including narrowing the scope to specific school segments, extending geographic coverage to sub-market state analysis, expanding competitor profiling to up to 15 named companies with primary research validation, or deepening the consumer analysis with original survey data from Malaysian parent and student cohorts. Additional engagement models include bespoke market entry strategy consulting, competitive benchmarking dashboards, and ongoing research subscription packages. To request a customisation proposal, please contact Nexdigm at <strong>Enquiry@nexdigm.com</strong>.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
