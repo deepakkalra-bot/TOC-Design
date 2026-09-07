@@ -20,6 +20,11 @@
      Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
      ============================================================ -->
 
+<!-- ============================================================
+     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
+     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
+     ============================================================ -->
+
 <div class="fi-report-wrap">
 
   <!-- ══ TALK TO US — blinking CTA, top of content (#6) ══════ -->
@@ -228,6 +233,11 @@
       </table>
     </div>
     <p class="fi-comp-note">&#128274; Detailed cross-comparison data — including Annual Revenue, School Segment Focus, Curriculum Alignment, Digital Platform Capability, and Geographic Reach — are available in the full report. <a href="#talk-to-us" class="fi-cta-blink">Talk to Us</a> to access complete competitive intelligence.</p>
+
+    <div class="fi-chart-wrap">
+      <div class="fi-chart-title">Malaysia K12 Education Market of Key Players (in Value %)</div>
+      <canvas id="fi-chartCompetitive" class="fi-chart-canvas" style="max-height:320px;"></canvas>
+    </div>
   </div>
 
   <!-- ══ E. GROWTH DRIVERS ════════════════════════════════════ -->
@@ -253,37 +263,63 @@
     </div>
   </div>
 
-  <!-- ══ F. CHALLENGES — 2 boxes only ════════════════════════ -->
-  <div class="fi-section-card">
+  <!-- ══ F. CHALLENGES — 3-card Swag-style vertical stack ═════ -->
+  <div class="fi-section-card fi-challenge-section">
     <h3 class="fi-sub-title">Market Analysis — Market Challenges</h3>
-    <div class="fi-dc-grid">
-      <div class="fi-challenge-box">
+
+    <div class="fi-challenge-stack">
+      <!-- Box 1: in flow — sets container height; scales back as new cards arrive -->
+      <div class="fi-ch-box-1">
         <h4 class="fi-driver-title">Urban–Rural Digital Divide</h4>
         <p>Approximately 15.4% of public schools in Sabah and Sarawak lacked reliable broadband as of 2024 (MCMC 2024), constraining EdTech deployment and limiting addressable market expansion for digital operators in rural and remote regions of Malaysia.</p>
       </div>
-      <div class="fi-challenge-box">
+      <!-- Box 2: slides UP in Phase 1; peeks at top in Phase 2 -->
+      <div class="fi-ch-box-2">
         <h4 class="fi-driver-title">Teacher Shortage &amp; Supply Constraints</h4>
         <p>The Ministry of Education reported a shortage of approximately 12,000 qualified secondary teachers in 2024. IPG Malaysia produced approximately 10,400 graduates annually — insufficient to close the supply gap, intensifying competition for qualified educators across public and private institutions.</p>
       </div>
+      <!-- Box 3: slides UP in Phase 2; becomes the top card -->
+      <div class="fi-ch-box-3">
+        <h4 class="fi-driver-title">Regulatory Complexity in Private &amp; International School Licensing</h4>
+        <p>BPSS private school licensing timelines of 12–24 months and mandatory ministerial approval for annual fee revisions exceeding 10% per annum introduce structural barriers to market entry. Foreign education groups face compounding compliance requirements across curriculum approval, teacher credentialling, and building standards — constraining the pace of premium school expansion across Malaysia's key urban corridors.</p>
+      </div>
+    </div>
+
+    <!-- Dot indicators: show which card is on top -->
+    <div class="fi-ch-counter">
+      <span class="fi-ch-dot fi-ch-dot-active" id="fi-dot-1"></span>
+      <span class="fi-ch-dot" id="fi-dot-2"></span>
+      <span class="fi-ch-dot" id="fi-dot-3"></span>
     </div>
   </div>
 
-  <!-- ══ G. OPPORTUNITIES — scroll-animated sequential (#3) ════ -->
-  <div class="fi-section-card">
+  <!-- ══ G. OPPORTUNITIES — Swag-style horizontal scroll stack ═ -->
+  <div class="fi-section-card fi-opp-section">
     <h3 class="fi-sub-title">Market Analysis — Market Opportunities</h3>
-    <p>Three high-growth opportunity themes are converging in the Malaysia K12 market through 2030, each supported by government policy, demographic trends, and digital infrastructure maturation. As users scroll through these opportunities, each is highlighted sequentially to reflect the prioritisation of investment readiness.</p>
+    <p>Three high-growth opportunity themes are converging in the Malaysia K12 market through 2030, each supported by government policy, demographic trends, and digital infrastructure maturation. Scroll to explore each opportunity.</p>
 
-    <div class="fi-opp-box">
-      <h4 class="fi-driver-title">AI-Driven Personalised Learning and Adaptive EdTech Platforms</h4>
-      <p>Malaysia's National Artificial Intelligence Roadmap (AI-Rmap 2021–2025) identified education as a priority sector, with MDEC allocating MYR 300 million toward AI curriculum integration and educator upskilling. Malaysia's school-age cohort of approximately 5.2 million students provides a substantial commercial base for adaptive learning platforms, with SPM and PT3 exam preparation spending migrating to mobile-first digital services.</p>
+    <div class="fi-opp-hstack-wrap" id="fi-opp-hstack-wrap">
+      <div class="fi-opp-hcard" id="fi-opp-hcard-1">
+        <div class="fi-opp-hcard-num">01 / 03</div>
+        <h4 class="fi-driver-title">AI-Driven Personalised Learning and Adaptive EdTech Platforms</h4>
+        <p>Malaysia's National Artificial Intelligence Roadmap (AI-Rmap 2021–2025) identified education as a priority sector, with MDEC allocating MYR 300 million toward AI curriculum integration and educator upskilling. Malaysia's school-age cohort of approximately 5.2 million students provides a substantial commercial base for adaptive learning platforms, with SPM and PT3 exam preparation spending migrating to mobile-first digital services.</p>
+      </div>
+      <div class="fi-opp-hcard" id="fi-opp-hcard-2">
+        <div class="fi-opp-hcard-num">02 / 03</div>
+        <h4 class="fi-driver-title">Premium International Curriculum Expansion in Klang Valley and Johor</h4>
+        <p>The number of registered international schools in Johor grew from 22 in 2020 to 31 in 2024 (Ministry of Education Malaysia, BPSS 2024), while Kuala Lumpur and Selangor collectively host over 160 international school campuses. Malaysia's MM2H programme revision in 2024 is expected to increase inbound expatriate families by an estimated 15,000 households over 2025–2027 (Tourism Malaysia, 2024), each representing premium school fee income.</p>
+      </div>
+      <div class="fi-opp-hcard" id="fi-opp-hcard-3">
+        <div class="fi-opp-hcard-num">03 / 03</div>
+        <h4 class="fi-driver-title">Government EdTech Procurement and School Digitalisation Contracts</h4>
+        <p>The Ministry of Education's DigitalEDU initiative under Budget 2025, backed by MYR ~X.X billion in committed allocation, creates direct procurement opportunities for device manufacturers, LMS providers, and cloud infrastructure operators. The government's target to equip 1 million students with devices generates downstream demand for curriculum-aligned content platforms across Malaysia's 10,247 public school premises.</p>
+      </div>
     </div>
-    <div class="fi-opp-box">
-      <h4 class="fi-driver-title">Premium International Curriculum Expansion in Klang Valley and Johor</h4>
-      <p>The number of registered international schools in Johor grew from 22 in 2020 to 31 in 2024 (Ministry of Education Malaysia, BPSS 2024), while Kuala Lumpur and Selangor collectively host over 160 international school campuses. Malaysia's MM2H programme revision in 2024 is expected to increase inbound expatriate families by an estimated 15,000 households over 2025–2027 (Tourism Malaysia, 2024), each representing premium school fee income.</p>
-    </div>
-    <div class="fi-opp-box">
-      <h4 class="fi-driver-title">Government EdTech Procurement and School Digitalisation Contracts</h4>
-      <p>The Ministry of Education's DigitalEDU initiative under Budget 2025, backed by MYR ~X.X billion in committed allocation, creates direct procurement opportunities for device manufacturers, LMS providers, and cloud infrastructure operators. The government's target to equip 1 million students with devices generates downstream demand for curriculum-aligned content platforms across Malaysia's 10,247 public school premises.</p>
+
+    <div class="fi-opp-hdots" id="fi-opp-hdots">
+      <span class="fi-opp-hdot" id="fi-opp-hdot-1"></span>
+      <span class="fi-opp-hdot" id="fi-opp-hdot-2"></span>
+      <span class="fi-opp-hdot" id="fi-opp-hdot-3"></span>
     </div>
   </div>
 
@@ -352,23 +388,26 @@
     </div>
   </div>
 
-  <!-- ══ I. RELATED TAGS — clickable ══════════════════════════ -->
-  <div class="fi-section-card" style="padding-bottom:20px;">
-    <h3 class="fi-sub-title" style="margin-top:0;">Related Tags</h3>
-    <div class="fi-tag-row">
-      <a href="#" class="fi-tag">Malaysia Education Blueprint</a>
-      <a href="#" class="fi-tag">K12 EdTech</a>
-      <a href="#" class="fi-tag">SPM Examination</a>
-      <a href="#" class="fi-tag">International Schools</a>
-      <a href="#" class="fi-tag">DigitalEDU Initiative</a>
-      <a href="#" class="fi-tag">KSSM Curriculum</a>
-      <a href="#" class="fi-tag">Tuition Centres</a>
-      <a href="#" class="fi-tag">Adaptive Learning</a>
-      <a href="#" class="fi-tag">DELIMa Platform</a>
-      <a href="#" class="fi-tag">MADANI Framework</a>
-      <a href="#" class="fi-tag">Supplementary Education</a>
-      <a href="#" class="fi-tag">Private School Malaysia</a>
-    </div>
-  </div>
 
 </div><!-- /fi-report-wrap -->
+<script>
+window.fiChartData = {
+  marketSize: {
+    labels:  ['2018','2021','2022','2023','2024','2025E','2026F','2027F','2028F','2029F','2030F'],
+    revenue: [4.7, 4.4, 4.9, 5.5, 6.2, 6.8, 7.3, 7.9, 8.5, 9.2, 9.9],
+    growth:  [null, -6.4, 11.4, 12.2, 12.7, 9.7, 7.4, 8.2, 7.6, 8.2, 7.6]
+  },
+  businessType: {
+    labels: ['Govt / National Schools','Supplementary Tuition','Private Schools','International Schools','EdTech Platforms'],
+    data:   [62, 18, 10, 7, 3]
+  },
+  businessChannel: {
+    labels: ['Physical Classroom','Online / LMS','Mobile Application','Hybrid / Blended','Retail Franchise'],
+    data:   [71, 12, 7, 6, 4]
+  },
+  competitive: {
+    labels: ["Player 1", 'Player 2', 'Player 3', 'Player 4', 'Player 5'],
+    data:   [28, 22, 18, 16, 16]
+  }
+};
+</script>
