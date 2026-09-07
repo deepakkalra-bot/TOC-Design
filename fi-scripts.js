@@ -82,11 +82,15 @@
 
     var cards   = wrap.querySelectorAll('.fi-opp-hcard');
     var total   = cards.length;          /* 3 */
+    if (total === 0) return;
+
     var PHASES  = total - 1;             /* 2 transitions */
-    var locked  = false;
-    var lockY   = 0;
     var progress = 0;                    /* 0 = Card 1, 1 = Card 3 */
-    var SENSITIVITY = 0.0045;
+
+    var animFrame = null;
+    var autoTimer = null;
+    var currentCardIndex = 0;
+    var isHovered = false;
 
     function lerp(a, b, t) { return a + (b - a) * t; }
     function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
@@ -94,8 +98,10 @@
     /* Set container height to the tallest card */
     function initHeight() {
       var maxH = 0;
-      cards.forEach(function (c) { maxH = Math.max(maxH, c.offsetHeight); });
-      if (maxH > 0) wrap.style.height = maxH + 'px';
+      cards.forEach(function (c) {
+        if (c.offsetHeight > maxH) maxH = c.offsetHeight;
+      });
+      if (maxH > 0) wrap.style.height = (maxH + 8) + 'px';
     }
 
     /* Render all cards based on global progress 0→1 */
@@ -108,20 +114,20 @@
 
         if (i < phase) {
           /* Already exited left — fully off screen */
-          tx = -100; sc = 0.90; op = 0.7;
+          tx = -100; sc = 0.90; op = 0;
         } else if (i === phase && gp < 1) {
           /* Currently exiting */
           tx = lerp(0, -100, pp);
           sc = lerp(1, 0.90, pp);
-          op = lerp(1, 0.7, pp);
+          op = lerp(1, 0, pp);
         } else if (i === phase + 1 && gp < 1) {
           /* Currently entering from right */
           tx = lerp(100, 0, pp);
           sc = lerp(0.93, 1, pp);
-          op = lerp(0.8, 1, pp);
+          op = lerp(0, 1, pp);
         } else if (i > phase + 1 || (gp >= 1 && i > phase)) {
           /* Waiting off-screen right */
-          tx = 100; sc = 0.93; op = 0.8;
+          tx = 100; sc = 0.93; op = 0;
         } else {
           /* gp === 1: last card active */
           tx = 0; sc = 1; op = 1;
@@ -131,52 +137,105 @@
         card.style.opacity   = op;
       });
 
-      /* Update dots */
+      /* Update dots active state */
       var dotIdx = gp >= 1 ? total - 1 : (pp >= 0.5 ? phase + 1 : phase);
       document.querySelectorAll('#fi-opp-hdots .fi-opp-hdot').forEach(function (d, i) {
         d.classList.toggle('fi-opp-hdot-active', i === dotIdx);
       });
     }
 
-    /* ── Momentum / inertia guard while locked ──────────────── */
-    window.addEventListener('scroll', function () {
-      if (locked) window.scrollTo(0, lockY);
-    }, { passive: true });
+    function animateToProgress(targetP) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      var startP = progress;
+      var startTime = null;
+      var duration = 350;
 
-    /* ── Main wheel driver ──────────────────────────────────── */
-    window.addEventListener('wheel', function (e) {
-      var rect  = section.getBoundingClientRect();
-      var wh    = window.innerHeight;
-
-      var delta = e.deltaY;
-      if (e.deltaMode === 1) delta *= 16;
-      if (e.deltaMode === 2) delta *= 600;
-
-      if (!locked) {
-        var reachedMid = rect.top <= wh / 2 && rect.bottom > 0;
-        var needsAnim  = (delta > 0 && progress < 1) || (delta < 0 && progress > 0);
-        if (!reachedMid || !needsAnim) return;
-        lockY  = window.pageYOffset;
-        locked = true;
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var t = Math.min(elapsed / duration, 1);
+        var ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        progress = lerp(startP, targetP, ease);
+        render(progress);
+        if (t < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          progress = targetP;
+          render(progress);
+          animFrame = null;
+        }
       }
+      animFrame = requestAnimationFrame(step);
+    }
 
-      e.preventDefault();
+    function goToCard(idx) {
+      currentCardIndex = idx;
+      var targetP = idx / PHASES;
+      animateToProgress(targetP);
+    }
 
-      var next = progress + delta * SENSITIVITY;
+    function startAutoScroll() {
+      stopAutoScroll();
+      autoTimer = setInterval(function () {
+        if (!isHovered) {
+          var nextIdx = (currentCardIndex + 1) % total;
+          goToCard(nextIdx);
+        }
+      }, 800);
+    }
 
-      if (next <= 0 && delta < 0) {
-        progress = 0; render(0); locked = false; return;
+    function stopAutoScroll() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
       }
-      if (next >= 1 && delta > 0) {
-        progress = 1; render(1); locked = false; return;
-      }
+    }
 
-      progress = clamp(next, 0, 1);
-      render(progress);
-    }, { passive: false });
+    /* Pause auto scroll on hover */
+    section.addEventListener('mouseenter', function () {
+      isHovered = true;
+    });
+
+    section.addEventListener('mouseleave', function () {
+      isHovered = false;
+    });
+
+    /* Dot click navigation */
+    var dots = document.querySelectorAll('#fi-opp-hdots .fi-opp-hdot');
+    dots.forEach(function (d, i) {
+      d.addEventListener('click', function (e) {
+        e.preventDefault();
+        goToCard(i);
+        startAutoScroll();
+      });
+    });
+
+    /* Left and Right arrow navigation */
+    var prevBtn = document.getElementById('fi-opp-prev');
+    var nextBtn = document.getElementById('fi-opp-next');
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var prevIdx = (currentCardIndex - 1 + total) % total;
+        goToCard(prevIdx);
+        startAutoScroll();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function (e) {
+        e.preventDefault();
+        var nextIdx = (currentCardIndex + 1) % total;
+        goToCard(nextIdx);
+        startAutoScroll();
+      });
+    }
 
     initHeight();
-    render(0); /* initial state — Card 1 visible */
+    window.addEventListener('resize', initHeight);
+    render(0);
+    startAutoScroll();
   };
 
   /* ── CHALLENGE VERTICAL CARD STACK — 3-card Swag-style scroll lock ─ */
@@ -209,9 +268,43 @@
     var SENSITIVITY = 0.0045;
     var locked      = false;
     var lockY       = 0;
+    var animFrame   = null;
 
     function lerp(a, b, t) { return a + (b - a) * t; }
     function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
+
+    function animateToProgress(targetP) {
+      if (animFrame) cancelAnimationFrame(animFrame);
+      var startP = progress;
+      var startTime = null;
+      var duration = 450;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        var elapsed = timestamp - startTime;
+        var t = Math.min(elapsed / duration, 1);
+        var ease = t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        progress = lerp(startP, targetP, ease);
+        render(progress);
+        if (t < 1) {
+          animFrame = requestAnimationFrame(step);
+        } else {
+          progress = targetP;
+          render(progress);
+          animFrame = null;
+        }
+      }
+      animFrame = requestAnimationFrame(step);
+    }
+
+    [dot1, dot2, dot3].forEach(function (dot, idx) {
+      if (!dot) return;
+      dot.addEventListener('click', function (e) {
+        e.preventDefault();
+        var targetP = idx === 0 ? 0 : (idx === 1 ? 0.5 : 1.0);
+        animateToProgress(targetP);
+      });
+    });
 
     function render(p) {
       var stackH   = stackEl.offsetHeight;    /* container height (Box1 + padding) */
@@ -280,6 +373,7 @@
 
       e.preventDefault(); /* stop ALL page scroll while locked */
 
+      if (animFrame) cancelAnimationFrame(animFrame);
       var next = progress + delta * SENSITIVITY;
 
       if (next <= 0 && delta < 0) {

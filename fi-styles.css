@@ -288,9 +288,13 @@
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--fi-purple-md);
-  transition: background 0.3s;
+  transition: background 0.3s, transform 0.2s;
+  cursor: pointer;
 }
-.fi-ch-dot.fi-ch-dot-active { background: var(--fi-purple); }
+.fi-ch-dot:hover {
+  transform: scale(1.3);
+}
+.fi-ch-dot.fi-ch-dot-active { background: var(--fi-purple); transform: scale(1.2); }
 
 /* ── GROWTH DRIVER BOXES — vertical card stack animation (4 boxes) ── */
 .fi-growth-section { overflow: hidden; }
@@ -416,23 +420,62 @@
   margin-bottom: 0;
   line-height: 1.65;
 }
-/* Progress dots */
+/* Carousel controls & progress dots */
+.fi-opp-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 18px;
+}
 .fi-opp-hdots {
   display: flex;
   justify-content: center;
   gap: 8px;
-  margin-top: 18px;
+  margin-top: 0;
 }
 .fi-opp-hdot {
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--fi-purple-md);
   transition: background 0.3s, transform 0.3s;
-  cursor: default;
+  cursor: pointer;
+}
+.fi-opp-hdot:hover {
+  transform: scale(1.2);
 }
 .fi-opp-hdot.fi-opp-hdot-active {
   background: var(--fi-purple);
   transform: scale(1.35);
+}
+.fi-opp-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--fi-purple-md);
+  background: #ffffff;
+  color: var(--fi-purple);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  padding: 0 0 2px 0;
+  outline: none;
+}
+.fi-opp-arrow:hover {
+  background: var(--fi-purple);
+  color: #ffffff;
+  border-color: var(--fi-purple);
+  transform: scale(1.08);
+  box-shadow: 0 2px 8px rgba(107, 33, 168, 0.25);
+}
+.fi-opp-arrow:active {
+  transform: scale(0.95);
 }
 /* Scroll hint label */
 .fi-opp-scroll-hint {
