@@ -5,6 +5,33 @@
    ============================================================ */
 
 :root {
+  /* --fi-purple:    #645BA8; */
+  --fi-purple:    #4012A6;
+  --fi-purple-d:  #211C48;
+  --fi-purple-lt: #EAE8F4;
+  /* --fi-purple-md: #C6BDDD; */
+  --fi-purple-md: #C6BDDD;
+  --fi-green:     #2D7D3E;
+  --fi-green-lt:  #C4E4C4;
+  --fi-amber-lt:  #FBE5C3;
+  --fi-blue-lt:   #D9E1E5;
+  --fi-gray-800:  #333333;
+  --fi-gray-600:  #467082;
+  --fi-gray-200:  #DFDDDD;
+  --fi-border:    #C6BDDD;
+  --fi-white:     #ffffff;
+  --fi-bg:        #F4F3F8;
+  --fi-black:      #000000;
+  --fi-orange:    #7C3A00;
+}
+
+/* ============================================================
+   fi-styles.css — Nexdigm Market Research Widget
+   Prefix: fi-  |  Brand: Nexdigm Guidelines
+   Updated: 9 new feedback points applied
+   ============================================================ */
+
+/* :root {
   --fi-purple:    #645BA8;
   --fi-purple-d:  #211C48;
   --fi-purple-lt: #EAE8F4;
@@ -19,7 +46,7 @@
   --fi-border:    #C6BDDD;
   --fi-white:     #ffffff;
   --fi-bg:        #F4F3F8;
-}
+} */
 
 /* ── RESET ────────────────────────────────────────────────── */
 .fi-report-wrap *, .fi-report-wrap *::before, .fi-report-wrap *::after { box-sizing: border-box; }
@@ -145,50 +172,276 @@
 .fi-chart-canvas { max-height: 280px; }
 
 /* ── DRIVER BOXES ─────────────────────────────────────────── */
-.fi-dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; align-items: start; }
-.fi-driver-box { background: var(--fi-green-lt); border: 1px solid #82C992; border-radius: 4px; padding: 16px; }
-.fi-driver-title { font-size: 14px; font-weight: 700; margin: 0 0 8px; }
-.fi-driver-box .fi-driver-title { color: #1C4924; }
-.fi-driver-box p, .fi-challenge-box p, .fi-opp-box p { font-size: 13px; margin-bottom: 0; }
-
-/* ── CHALLENGE BOXES — compact 3-col (#2) ─────────────────── */
-.fi-challenge-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin: 16px 0;
-  align-items: start;
-}
-.fi-challenge-box {
-  background: var(--fi-amber-lt);
-  border: 1px solid #F7C982;
-  border-radius: 4px;
-  padding: 14px;
-}
-.fi-challenge-box .fi-driver-title { color: #BC852C; font-size: 13px; }
-.fi-challenge-box p { font-size: 12px; color: var(--fi-gray-600); line-height: 1.5; }
-
-/* ── OPPORTUNITY BOXES — repeating scroll highlight (#3) ───── */
-.fi-opp-box {
-  background: var(--fi-blue-lt);
-  border-left: 4px solid #467082;
-  border-radius: 4px;
-  padding: 18px;
-  margin-bottom: 14px;
-  /* Always visible — no opacity:0 so content is never hidden */
-  transition: border-left-color 0.35s ease,
-              box-shadow 0.35s ease,
-              background 0.35s ease,
-              transform 0.35s ease;
-}
-/* Highlighted state — triggers every time box enters viewport */
-.fi-opp-box.fi-opp-active {
-  border-left-color: var(--fi-purple);
+.fi-dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; align-items: stretch; }
+.fi-driver-box {
   background: var(--fi-purple-lt);
-  box-shadow: 0 4px 22px rgba(100,91,168,0.18);
-  transform: translateX(6px);
+  border: 1px solid var(--fi-border);
+  border-left: 4px solid var(--fi-purple);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, background 0.2s;
 }
-.fi-opp-box .fi-driver-title { color: #233841; font-size: 14px; }
+.fi-driver-box:hover {
+  background: #e0dcf5;
+  box-shadow: 0 4px 16px rgba(64,18,166,0.12);
+}
+.fi-driver-title { font-size: 14px; font-weight: 700; margin: 0 0 8px; }
+.fi-driver-box .fi-driver-title { color: var(--fi-purple-d); }
+.fi-driver-box p, .fi-challenge-box p, .fi-opp-box p { font-size: 13px; margin-bottom: 0; flex: 1; }
+
+/* ── CHALLENGE BOXES — vertical card stack with peek ──────── */
+/*
+   Stack has padding-bottom: 52px — creates visible space for Box 2 header.
+   Box 2 height = calc(100% - 52px) = same as Box 1.
+   translateY(100%) on Box 2 = moves it down by Box1 height.
+   → Box 2 sits just below Box 1, its top 52px visible in the peek gap.
+   End state: translateY(52px) = Box 1 top 52px (header) visible above Box 2.
+*/
+.fi-challenge-section { overflow: hidden; }
+
+.fi-challenge-stack {
+  position: relative;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: 4px;
+  padding-bottom: 20px;   /* peek gap — shows Box 2 header at bottom */
+}
+
+/* Box 1 — white card with subtle shadow, in normal flow to set container height */
+.fi-ch-box-1 {
+  background: #ffffff;
+  border: 1px solid #E8E6F0;
+  border-radius: 4px;
+  padding: 20px 22px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(100,91,168,0.10);
+  will-change: transform;
+  transform-origin: top center;
+}
+
+/* Box 2 — slides up in Phase 1; peeks at top in Phase 2 */
+.fi-ch-box-2 {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: calc(100% - 20px);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  border-radius: 4px;
+  background: #F5F4F9;
+  border: 1px solid #E0DCF0;
+  box-shadow: 0 6px 24px rgba(64,18,166,0.16);
+  transform: translateY(100%);
+  will-change: transform;
+  transform-origin: top center;
+}
+
+/* Box 3 — slides up in Phase 2; becomes the top card */
+.fi-ch-box-3 {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: calc(100% - 20px);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+  border-radius: 4px;
+  background: #FEF6E4;       
+  border: 1px solid #F5CC6E; 
+  box-shadow: 0 10px 36px rgba(64,18,166,0.22);
+  transform: translateY(100%);
+  will-change: transform;
+  transform-origin: top center;
+}
+
+/* .fi-ch-visible no longer needed — JS drives transform directly */
+
+/* Shared text styles */
+.fi-ch-box-1 .fi-driver-title { color: var(--fi-orange); }
+.fi-ch-box-2 .fi-driver-title { color: var(--fi-purple-d); }
+.fi-ch-box-3 .fi-driver-title { color: var(--fi-purple-d); }
+.fi-ch-box-1 p,
+.fi-ch-box-2 p,
+.fi-ch-box-3 p {
+  font-size: 13px;
+  color: var(--fi-black);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+/* Card counter dots — purple tones */
+.fi-ch-counter {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.fi-ch-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--fi-purple-md);
+  transition: background 0.3s;
+}
+.fi-ch-dot.fi-ch-dot-active { background: var(--fi-purple); }
+
+/* ── GROWTH DRIVER BOXES — vertical card stack animation (4 boxes) ── */
+.fi-growth-section { overflow: hidden; }
+
+.fi-growth-stack {
+  position: relative;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: 4px;
+  padding-bottom: 20px;   /* peek gap */
+}
+
+/* Box 1 — white card with subtle shadow base */
+.fi-gr-box-1 {
+  background: #ffffff;
+  border: 1px solid #E8E6F0;
+  border-radius: 4px;
+  padding: 20px 22px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 12px rgba(100,91,168,0.10);
+}
+
+/* Boxes 2, 3, 4 — elevated sliding cards */
+.fi-gr-box-2,
+.fi-gr-box-3,
+.fi-gr-box-4 {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 20px);
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: #F5F4F9;
+  border: 1px solid #E0DCF0;
+  box-shadow: 0 6px 24px rgba(100,91,168,0.16);
+  transform: translateY(100%);
+  will-change: transform;
+}
+
+.fi-gr-box-2 { z-index: 2; }
+.fi-gr-box-3 { z-index: 3; }
+.fi-gr-box-4 { z-index: 4; }
+
+/* Shared text styles — purple titles */
+.fi-gr-box-1 .fi-driver-title,
+.fi-gr-box-2 .fi-driver-title,
+.fi-gr-box-3 .fi-driver-title,
+.fi-gr-box-4 .fi-driver-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--fi-purple);
+}
+
+.fi-gr-box-1 p,
+.fi-gr-box-2 p,
+.fi-gr-box-3 p,
+.fi-gr-box-4 p {
+  font-size: 13px;
+  color: var(--fi-gray-600);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+/* Card counter dots */
+.fi-gr-counter {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.fi-gr-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--fi-purple-md);
+  transition: background 0.3s;
+}
+.fi-gr-dot.fi-gr-dot-active { background: var(--fi-purple); }
+
+/* ── OPPORTUNITY HORIZONTAL STACK (Swag-style, scroll-driven) ─ */
+.fi-opp-hstack-wrap {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  margin: 20px 0 0;
+  /* height set by JS after measuring cards */
+}
+.fi-opp-hcard {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  padding: 26px 24px 24px;
+  background: var(--fi-purple-lt);
+  border: 1px solid var(--fi-border);
+  border-left: 4px solid var(--fi-purple);
+  border-radius: 8px;
+  box-sizing: border-box;
+  will-change: transform;
+  transform-origin: center center;
+}
+.fi-opp-hcard-num {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--fi-purple-md);
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.fi-opp-hcard .fi-driver-title {
+  color: var(--fi-purple-d);
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.fi-opp-hcard p {
+  font-size: 13px;
+  color: var(--fi-gray-600);
+  margin-bottom: 0;
+  line-height: 1.65;
+}
+/* Progress dots */
+.fi-opp-hdots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+}
+.fi-opp-hdot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--fi-purple-md);
+  transition: background 0.3s, transform 0.3s;
+  cursor: default;
+}
+.fi-opp-hdot.fi-opp-hdot-active {
+  background: var(--fi-purple);
+  transform: scale(1.35);
+}
+/* Scroll hint label */
+.fi-opp-scroll-hint {
+  text-align: center;
+  font-size: 11px;
+  color: var(--fi-purple-md);
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
 
 /* ── COMPETITIVE TABLE ────────────────────────────────────── */
 .fi-table-scroll {
@@ -293,6 +546,710 @@
   height: 22px;
   border-radius: 50%;
   font-size: 11px;
+  font-weight: 800;
+  background: var(--fi-purple-lt);
+  color: var(--fi-purple);
+  flex-shrink: 0;
+}
+.fi-phase-active .fi-phase-num-badge { background: rgba(255,255,255,0.2); color: #fff; }
+.fi-phase-connector { font-size: 20px; color: var(--fi-purple-md); flex-shrink: 0; line-height: 1; }
+
+.fi-phase-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+.fi-phase-card {
+  border: 1px solid var(--fi-border);
+  border-radius: 8px;
+  padding: 18px;
+  background: #fff;
+  transition: all 0.25s;
+  cursor: default;
+}
+.fi-phase-card.fi-phase-card-active {
+  border-color: var(--fi-purple);
+  box-shadow: 0 4px 20px rgba(100,91,168,0.14);
+  background: var(--fi-purple-lt);
+}
+.fi-phase-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--fi-gray-200);
+}
+.fi-phase-icon {
+  width: 38px;
+  height: 38px;
+  background: var(--fi-purple-lt);
+  border: 1px solid var(--fi-purple-md);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  flex-shrink: 0;
+}
+.fi-phase-card.fi-phase-card-active .fi-phase-icon {
+  background: var(--fi-purple);
+  border-color: var(--fi-purple);
+}
+.fi-phase-card-head h4 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fi-gray-800);
+  margin: 0;
+  padding-top: 2px;
+  line-height: 1.4;
+}
+.fi-phase-list { list-style: none; padding: 0; margin: 0; }
+.fi-phase-list li {
+  font-size: 12px;
+  color: var(--fi-gray-600);
+  padding: 4px 0;
+  line-height: 1.5;
+  display: flex;
+  gap: 7px;
+  align-items: flex-start;
+}
+.fi-phase-list li::before {
+  content: '›';
+  color: var(--fi-purple);
+  font-weight: 800;
+  font-size: 14px;
+  flex-shrink: 0;
+  line-height: 1.3;
+}
+
+/* ── TOC ACCORDION ────────────────────────────────────────── */
+.fi-toc-accordion { margin-bottom: 8px; border: 1px solid var(--fi-border); border-radius: 4px; overflow: hidden; }
+.fi-toc-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  cursor: pointer;
+  background: #fafafa;
+  transition: background 0.15s;
+  user-select: none;
+}
+.fi-toc-header:hover, .fi-toc-header.fi-open { background: var(--fi-purple-lt); }
+.fi-toc-icon { width: 32px; height: 32px; flex-shrink: 0; object-fit: contain; }
+.fi-toc-header-text { font-weight: 700; font-size: 14px; color: var(--fi-gray-800); flex: 1; }
+.fi-toc-header.fi-open .fi-toc-header-text { color: var(--fi-purple); }
+.fi-toc-chevron { font-size: 12px; color: var(--fi-gray-600); transition: transform 0.2s; }
+.fi-toc-header.fi-open .fi-toc-chevron { transform: rotate(180deg); }
+.fi-toc-body { display: none; padding: 10px 16px 16px 16px; border-top: 1px solid var(--fi-gray-200); }
+
+/* TOC list — fixed-height bar via ::before */
+.fi-toc-l1 { list-style: none; padding: 0; margin: 0; }
+.fi-toc-l1 > li {
+  position: relative;
+  padding: 4px 0 4px 14px;
+  margin-bottom: 7px;
+  font-size: 13px;
+  color: var(--fi-gray-600);
+  line-height: 1.6;
+}
+.fi-toc-l1 > li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 7px;
+  width: 3px; height: 18px;
+  background: var(--fi-purple);
+  border-radius: 2px;
+}
+.fi-toc-l1 > li strong { color: var(--fi-gray-800); font-weight: 700; }
+.fi-toc-l1 > li.fi-toc-heading { font-weight: 700; color: var(--fi-gray-800); margin-top: 10px; font-size: 13px; }
+.fi-toc-l1 > li.fi-toc-heading:first-child { margin-top: 0; }
+
+.fi-toc-l2 { list-style: none; padding: 0 0 0 12px; margin: 5px 0 4px; }
+.fi-toc-l2 > li {
+  position: relative;
+  padding: 3px 0 3px 12px;
+  margin-bottom: 4px;
+  font-size: 12.5px;
+  color: var(--fi-gray-600);
+  line-height: 1.5;
+}
+.fi-toc-l2 > li::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 6px;
+  width: 2px; height: 14px;
+  background: var(--fi-purple-md);
+  border-radius: 2px;
+}
+
+/* ── FAQ — enhanced design (#5) ──────────────────────────── */
+.fi-faq-item { margin-bottom: 8px; border: 1px solid var(--fi-border); border-radius: 6px; overflow: hidden; }
+.fi-faq-q {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  background: #fafafa;
+  transition: background 0.15s;
+  user-select: none;
+}
+.fi-faq-q:hover, .fi-faq-q.fi-open { background: var(--fi-purple-lt); }
+.fi-faq-badge {
+  background: var(--fi-purple);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 3px 8px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.fi-faq-q.fi-open .fi-faq-badge { background: var(--fi-purple-d); }
+.fi-faq-question { font-weight: 700; font-size: 14px; color: var(--fi-gray-800); flex: 1; }
+.fi-faq-q.fi-open .fi-faq-question { color: var(--fi-purple); }
+.fi-faq-icon { font-size: 18px; color: var(--fi-purple-md); transition: transform 0.2s; flex-shrink: 0; }
+.fi-faq-q.fi-open .fi-faq-icon { transform: rotate(45deg); color: var(--fi-purple); }
+.fi-faq-ans {
+  display: none;
+  padding: 16px 16px 16px 52px;
+  border-top: 1px solid var(--fi-gray-200);
+  border-left: 3px solid var(--fi-purple);
+}
+.fi-faq-ans p { font-size: 13.5px; color: var(--fi-gray-600); margin-bottom: 8px; line-height: 1.7; }
+.fi-faq-ans p:last-child { margin-bottom: 0; }
+
+/* ── TAGS ─────────────────────────────────────────────────── */
+.fi-tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--fi-gray-200); }
+.fi-tag {
+  background: var(--fi-purple-lt);
+  color: var(--fi-purple);
+  border: 1px solid var(--fi-purple-md);
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+  display: inline-block;
+}
+.fi-tag:hover { background: var(--fi-purple); color: #fff; }
+
+/* ── UTILITY ──────────────────────────────────────────────── */
+.fi-note { font-size: 12px; color: var(--fi-gray-600); margin-top: 6px; }
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 780px) {
+  .fi-seg-grid, .fi-dc-grid { grid-template-columns: 1fr; }
+  .fi-stat-grid { grid-template-columns: 1fr; }
+  .fi-challenge-grid { grid-template-columns: 1fr; }
+  .fi-phase-cards { grid-template-columns: 1fr; }
+  .fi-section-card { padding: 18px 16px; }
+  .fi-toc-body { padding-left: 16px; }
+  .fi-faq-ans { padding-left: 16px; }
+}
+
+/* ══════════════════════════════════════════════════════════
+   TOC — Redesigned chapter accordion (Ken Research-inspired)
+   New classes: fi-ch, fi-ch-hdr, fi-ch-num, fi-ch-title,
+                fi-ch-count, fi-ch-chevron, fi-ch-body,
+                fi-toc-controls, fi-toc-ctrl-btn
+   ══════════════════════════════════════════════════════════ */
+
+/* Top controls bar */
+.fi-toc-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
+  border-bottom: 2px solid var(--fi-purple-md);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.fi-toc-total {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--fi-purple);
+}
+.fi-toc-total span {
+  display: inline-block;
+  background: var(--fi-purple);
+  color: #fff;
+  border-radius: 12px;
+  padding: 2px 9px;
+  font-size: 11px;
+  font-weight: 800;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.fi-toc-btn-group { display: flex; gap: 8px; }
+.fi-toc-ctrl-btn {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--fi-border);
+  background: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fi-gray-600);
+  font-family: 'Segoe UI', Arial, sans-serif;
+  transition: all 0.15s;
+}
+.fi-toc-ctrl-btn:hover {
+  border-color: var(--fi-purple);
+  color: var(--fi-purple);
+  background: var(--fi-purple-lt);
+}
+
+/* Chapter accordion card */
+.fi-ch {
+  border: 1px solid var(--fi-border);
+  border-radius: 6px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.fi-ch:hover { box-shadow: 0 2px 12px rgba(100,91,168,0.10); }
+
+/* Chapter header */
+.fi-ch-hdr {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  cursor: pointer;
+  background: #fafafa;
+  border-left: 4px solid transparent;
+  transition: background 0.15s, border-color 0.15s;
+  user-select: none;
+}
+.fi-ch-hdr:hover        { background: var(--fi-purple-lt); border-left-color: var(--fi-purple-md); }
+.fi-ch-hdr.fi-open      { background: var(--fi-purple-lt); border-left-color: var(--fi-purple); }
+
+/* Chapter number — large bold left element */
+.fi-ch-num {
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--fi-purple-md);
+  min-width: 34px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.fi-ch-hdr:hover .fi-ch-num,
+.fi-ch-hdr.fi-open .fi-ch-num { color: var(--fi-purple); }
+
+/* Nexdigm icon */
+.fi-ch-icon { width: 30px; height: 30px; flex-shrink: 0; object-fit: contain; }
+
+/* Chapter title */
+.fi-ch-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--fi-gray-800);
+  flex: 1;
+  line-height: 1.4;
+}
+.fi-ch-hdr.fi-open .fi-ch-title { color: var(--fi-purple); }
+
+/* Section count badge */
+.fi-ch-count {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--fi-gray-600);
+  background: var(--fi-purple-lt);
+  border: 1px solid var(--fi-purple-md);
+  border-radius: 12px;
+  padding: 3px 10px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: all 0.15s;
+}
+.fi-ch-hdr.fi-open .fi-ch-count {
+  background: var(--fi-purple);
+  color: #fff;
+  border-color: var(--fi-purple);
+}
+
+/* Chevron */
+.fi-ch-chevron {
+  font-size: 11px;
+  color: var(--fi-gray-600);
+  transition: transform 0.22s, color 0.15s;
+  flex-shrink: 0;
+}
+.fi-ch-hdr.fi-open .fi-ch-chevron { transform: rotate(180deg); color: var(--fi-purple); }
+
+/* Chapter body */
+.fi-ch-body {
+  display: none;
+  padding: 12px 16px 16px 54px;  /* indent aligns under chapter title */
+  border-top: 1px solid var(--fi-gray-200);
+  background: #fdfcff;
+}
+
+@media (max-width: 780px) {
+  .fi-ch-body { padding-left: 16px; }
+  .fi-ch-num  { font-size: 17px; min-width: 26px; }
+}
+
+/* ── RESET ────────────────────────────────────────────────── */
+.fi-report-wrap *, .fi-report-wrap *::before, .fi-report-wrap *::after { box-sizing: border-box; }
+.fi-report-wrap {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--fi-gray-800);
+  background: var(--fi-bg);
+  padding: 28px 20px;
+}
+
+/* ── TALK TO US — blinking sticky CTA (#6) ─────────────────── */
+.fi-cta-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, var(--fi-purple-d) 0%, var(--fi-purple) 100%);
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin-bottom: 20px;
+  gap: 12px;
+}
+.fi-cta-topbar-text {
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.9;
+}
+.fi-cta-topbar-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #fff;
+  color: var(--fi-purple);
+  font-size: 13px;
+  font-weight: 800;
+  padding: 8px 18px;
+  border-radius: 20px;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
+  animation: fi-pulse 1.6s ease-in-out infinite;
+}
+.fi-cta-topbar-btn:hover { background: var(--fi-purple-lt); }
+@keyframes fi-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(255,255,255,0.5); }
+  50%       { opacity: 0.9; box-shadow: 0 0 0 6px rgba(255,255,255,0); }
+}
+
+/* ── SECTION CARDS ────────────────────────────────────────── */
+.fi-section-card {
+  background: var(--fi-white);
+  border: 1px solid var(--fi-border);
+  border-radius: 4px;
+  padding: 28px 30px;
+  margin-bottom: 22px;
+}
+.fi-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fi-purple);
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--fi-purple-md);
+}
+.fi-sub-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--fi-purple);
+  margin: 24px 0 10px;
+}
+.fi-report-wrap p { margin-bottom: 12px; color: var(--fi-black); }
+.fi-report-wrap p:last-child { margin-bottom: 0; }
+
+/* ── STAT BOXES ───────────────────────────────────────────── */
+.fi-stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 18px 0; }
+.fi-stat-box {
+  background: var(--fi-purple-lt);
+  border: 1px solid var(--fi-purple-md);
+  border-radius: 4px;
+  padding: 18px 14px;
+  text-align: center;
+}
+.fi-stat-val { font-size: 22px; font-weight: 800; color: var(--fi-purple); display: block; }
+.fi-stat-lbl { font-size: 11px; color: var(--fi-gray-600); margin-top: 4px; line-height: 1.4; }
+
+/* ── SEGMENTATION INTRO (#8) ──────────────────────────────── */
+.fi-seg-intro {
+  background: var(--fi-purple-lt);
+  border-left: 4px solid var(--fi-purple);
+  border-radius: 0 4px 4px 0;
+  padding: 14px 16px;
+  margin-bottom: 18px;
+  font-size: 13.5px;
+  color: var(--fi-gray-800);
+  line-height: 1.6;
+}
+
+/* ── SEGMENT GRID ─────────────────────────────────────────── */
+.fi-seg-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 16px 0;
+  align-items: start;
+}
+.fi-seg-box { border: 1px solid var(--fi-border); border-radius: 4px; overflow: hidden; }
+.fi-seg-head { background: var(--fi-purple); color: #fff; padding: 10px 14px; font-size: 13px; font-weight: 700; }
+.fi-seg-body { padding: 12px 14px; }
+.fi-seg-body ul { padding-left: 16px; margin: 0; }
+.fi-seg-body li { font-size: 13px; color: var(--fi-black); margin-bottom: 4px; }
+
+/* ── CHART CONTAINERS ─────────────────────────────────────── */
+.fi-chart-wrap {
+  background: #F5F3FA;
+  border: 1px solid var(--fi-border);
+  border-radius: 4px;
+  padding: 18px;
+  margin: 18px 0;
+}
+.fi-chart-title { font-size: 13px; font-weight: 700; color: var(--fi-purple); margin-bottom: 12px; text-align: center; }
+.fi-chart-canvas { max-height: 280px; }
+
+/* ── DRIVER BOXES ─────────────────────────────────────────── */
+.fi-dc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 16px 0; align-items: stretch; }
+.fi-driver-box {
+  background: var(--fi-purple-lt);
+  border: 1px solid var(--fi-border);
+  border-left: 4px solid var(--fi-purple);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, background 0.2s;
+}
+.fi-driver-box:hover {
+  background: #e0dcf5;
+  box-shadow: 0 4px 16px rgba(64,18,166,0.12);
+}
+.fi-driver-title { font-size: 14px; font-weight: 700; margin: 0 0 8px; }
+.fi-driver-box .fi-driver-title { color: var(--fi-purple-d); }
+.fi-driver-box p, .fi-challenge-box p, .fi-opp-box p { font-size: 13px; margin-bottom: 0; flex: 1; }
+
+/* ── CHALLENGE BOXES — vertical card stack animation ──────── */
+/*
+   Box 1: normal flow (sets container height), always visible as base
+   Box 2: absolute positioned, starts BELOW container (translateY 100%)
+          slides UP to cover Box 1 when section enters viewport
+          slides back DOWN when section exits
+*/
+.fi-challenge-section { overflow: hidden; }
+
+.fi-challenge-stack {
+  position: relative;
+  overflow: hidden;
+  margin: 16px 0;
+  border-radius: 4px;
+}
+
+/* Box 1 — in normal flow, sets the container height */
+.fi-ch-box-1 {
+  background: var(--fi-amber-lt);
+  border: 1px solid #F7C982;
+  border-radius: 4px;
+  padding: 20px 22px;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Box 2 — absolutely positioned, same size, starts below */
+.fi-ch-box-2 {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px 22px;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  border-radius: 4px;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  /* No CSS transition — animation driven directly by scroll via JS */
+  transform: translateY(102%);
+  will-change: transform;
+}
+
+/* When section enters viewport: Box 2 slides UP to cover Box 1 */
+.fi-ch-visible .fi-ch-box-2 {
+  transform: translateY(0);
+}
+
+/* Shared text styles */
+.fi-ch-box-1 .fi-driver-title,
+.fi-ch-box-2 .fi-driver-title {
+  font-size: 13.5px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.fi-ch-box-1 .fi-driver-title { color: #BC852C; }
+.fi-ch-box-2 .fi-driver-title { color: #92400e; }
+.fi-ch-box-1 p,
+.fi-ch-box-2 p {
+  font-size: 13px;
+  color: var(--fi-gray-600);
+  line-height: 1.65;
+  flex: 1;
+  margin: 0;
+}
+
+/* Card counter badge — shows which card is active */
+.fi-ch-counter {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+.fi-ch-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #F7C982;
+  transition: background 0.3s;
+}
+.fi-ch-dot.fi-ch-dot-active { background: #BC852C; }
+
+/* ── OPPORTUNITY BOXES — repeating scroll highlight (#3) ───── */
+.fi-opp-box {
+  background: var(--fi-blue-lt);
+  border-left: 4px solid #467082;
+  border-radius: 4px;
+  padding: 18px;
+  margin-bottom: 14px;
+  /* Always visible — no opacity:0 so content is never hidden */
+  transition: border-left-color 0.35s ease,
+              box-shadow 0.35s ease,
+              background 0.35s ease,
+              transform 0.35s ease;
+}
+/* Highlighted state — triggers every time box enters viewport */
+.fi-opp-box.fi-opp-active {
+  border-left-color: var(--fi-purple);
+  background: var(--fi-purple-lt);
+  box-shadow: 0 4px 22px rgba(100,91,168,0.18);
+  transform: translateX(6px);
+}
+.fi-opp-box .fi-driver-title { color: #233841; font-size: 14px; }
+
+/* ── COMPETITIVE TABLE ────────────────────────────────────── */
+.fi-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 16px 0;
+  border-radius: 4px;
+  border: 1px solid var(--fi-border);
+}
+.fi-comp-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 0; min-width: 1020px; }
+.fi-comp-table th {
+  background: var(--fi-purple);
+  color: #fff;
+  padding: 10px 12px;
+  text-align: left;
+  font-weight: 600;
+  white-space: nowrap;
+  border: 1px solid #4a3f9a;
+}
+.fi-comp-table td {
+  padding: 9px 12px;
+  border: 1px solid var(--fi-gray-200);
+  color: var(--fi-gray-600);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.fi-comp-table tr:nth-child(even) td { background: #F5F3FA; }
+.fi-comp-table tr:hover td { background: var(--fi-purple-lt); transition: background 0.15s; }
+.fi-comp-table td.fi-masked { text-align: center; font-weight: 700; font-size: 15px; color: var(--fi-purple-md); letter-spacing: 1px; }
+.fi-cta-blink {
+  display: inline-block;
+  background: var(--fi-purple);
+  color: #fff !important;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 5px 14px;
+  border-radius: 4px;
+  text-decoration: none;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  animation: fi-cta-blink-anim 1.3s ease-in-out infinite;
+  border: 2px solid var(--fi-purple);
+}
+.fi-cta-blink:hover { background: var(--fi-purple-d); border-color: var(--fi-purple-d); animation: none; }
+@keyframes fi-cta-blink-anim {
+  0%   { opacity: 1; transform: scale(1);    background: var(--fi-purple);   box-shadow: 0 0 0 0 rgba(100,91,168,0.6); }
+  35%  { opacity: 1; transform: scale(1.06); background: var(--fi-purple-d); box-shadow: 0 0 0 6px rgba(100,91,168,0.15); }
+  70%  { opacity: 0.75; transform: scale(0.97); background: var(--fi-purple); box-shadow: 0 0 0 0 rgba(100,91,168,0); }
+  100% { opacity: 1; transform: scale(1);    background: var(--fi-purple);   box-shadow: 0 0 0 0 rgba(100,91,168,0); }
+}
+.fi-comp-note {
+  font-size: 12px;
+  color: var(--fi-gray-600);
+  margin-top: 10px;
+  padding: 10px 14px;
+  background: var(--fi-purple-lt);
+  border-radius: 4px;
+  border-left: 3px solid var(--fi-purple);
+}
+
+/* ── RESEARCH METHODOLOGY — 3-phase card design (#4) ─────── */
+.fi-method-wrap { margin: 16px 0; }
+
+.fi-phase-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.fi-phase-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border: 2px solid var(--fi-border);
+  border-radius: 30px;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--fi-gray-600);
+}
+.fi-phase-tab.fi-phase-active {
+  background: var(--fi-purple-d);
+  border-color: var(--fi-purple-d);
+  color: #fff;
+}
+.fi-phase-tab:hover:not(.fi-phase-active) {
+  border-color: var(--fi-purple);
+  color: var(--fi-purple);
+  background: var(--fi-purple-lt);
+}
+.fi-phase-num-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  font-size: 10px;
   font-weight: 800;
   background: var(--fi-purple-lt);
   color: var(--fi-purple);
