@@ -1,29 +1,14 @@
-<!-- ============================================================
-     HTML BOX 1 — Market Overview
-     All 13 client feedback points applied
-     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
-     ============================================================ -->
-   <!DOCTYPE html>
-     <link rel="stylesheet" href="fi-styles.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="fi-scripts.js" defer></script>
+<!DOCTYPE html>
 <html lang="en">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- ============================================================
-     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
-     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
-     ============================================================ -->
-
-<!-- ============================================================
-     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
-     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
-     ============================================================ -->
-
-<!-- ============================================================
-     HTML BOX 1 — Market Overview  |  All 9 feedback points applied
-     Requires: fi-styles.css + fi-scripts.js + Chart.js CDN
-     ============================================================ -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Malaysia K12 Education Market Overview</title>
+  <link rel="stylesheet" href="fi-styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script src="fi-scripts.js" defer></script>
+</head>
+<body>
 
 <div class="fi-report-wrap">
 
@@ -54,7 +39,7 @@
       </div>
     </div>
 
-    <!-- Market Size chart — "Full Report" text removed (#9) -->
+    <!-- Market Size chart -->
     <div class="fi-chart-wrap">
       <div class="fi-chart-title">Malaysia K12 Education Market Size — Historical &amp; Forecast</div>
       <canvas id="fi-chartMarketSize" class="fi-chart-canvas"></canvas>
@@ -65,7 +50,6 @@
   <div class="fi-section-card">
     <h3 class="fi-sub-title">Market Segmentation — By School Type</h3>
 
-    <!-- #8: Intro paragraph above segmentation -->
     <div class="fi-seg-intro">
       Malaysia's K12 education ecosystem is structured across a diverse mix of government-funded national schools, private and international institutions, supplementary tuition providers, and emerging EdTech platforms. Understanding this segmentation is critical for identifying investment opportunities, competitive positioning, and demand patterns across the student population. The market is characterised by high government participation at primary level, growing private school uptake among upper-income households, and a structurally elevated supplementary tuition spend driven by Malaysia's examination culture.
     </div>
@@ -121,7 +105,6 @@
   <div class="fi-section-card">
     <h3 class="fi-sub-title">Market Segmentation — By Distribution Channel</h3>
 
-    <!-- #8: Intro paragraph above segmentation -->
     <div class="fi-seg-intro">
       Service delivery in the Malaysia K12 market spans traditional on-premise classroom instruction to rapidly growing digital and mobile platforms. Physical delivery continues to dominate due to regulatory accreditation requirements under the Education Act 1996, while the EdTech and online channel is expanding at the fastest rate — driven by Malaysia's 89.6% mobile internet penetration and the government's DELIMa platform roll-out. Analysing delivery channel share enables operators to identify underserved segments and channel migration trends.
     </div>
@@ -174,7 +157,6 @@
     <h3 class="fi-sub-title">Competitive Landscape</h3>
     <p>The Malaysia K12 Education Market exhibits a bifurcated competitive structure. The formal schooling segment is dominated by Kementerian Pendidikan Malaysia, while the supplementary, private, and EdTech segments host a fragmented mix of domestic operators, regional platforms, and multinational franchise networks. Competition is primarily driven by examination performance outcomes, curriculum accreditation, teacher quality, digital platform capability, and geographic reach across Malaysia's 13 states.</p>
 
-    <!-- Competitive table — Revenue column added (#1), ~ cells clean -->
     <div class="fi-table-scroll">
       <table class="fi-comp-table">
         <thead>
@@ -235,8 +217,8 @@
     <p class="fi-comp-note">&#128274; Detailed cross-comparison data — including Annual Revenue, School Segment Focus, Curriculum Alignment, Digital Platform Capability, and Geographic Reach — are available in the full report. <a href="#talk-to-us" class="fi-cta-blink">Talk to Us</a> to access complete competitive intelligence.</p>
 
     <div class="fi-chart-wrap">
-      <div class="fi-chart-title">Malaysia K12 Education Market of Key Players (in Value %)</div>
-      <canvas id="fi-chartCompetitive" class="fi-chart-canvas" style="max-height:320px;"></canvas>
+      <div class="fi-chart-title">Malaysia K12 Education Market Share of Key Players (in Value %)</div>
+      <canvas id="fi-chartCompetitive" class="fi-chart-canvas" style="max-height:260px;"></canvas>
     </div>
   </div>
 
@@ -263,33 +245,37 @@
     </div>
   </div>
 
-  <!-- ══ F. CHALLENGES — 3-card Swag-style vertical stack ═════ -->
+  <!-- ══ F. CHALLENGES — Swag-style horizontal scroll stack ═════ -->
   <div class="fi-section-card fi-challenge-section">
     <h3 class="fi-sub-title">Market Analysis — Market Challenges</h3>
+    <p>Three structural and regulatory challenges shape the Malaysia K12 education market, each requiring strategic mitigation by operators and investors. Scroll to explore each challenge.</p>
 
-    <div class="fi-challenge-stack">
-      <!-- Box 1: in flow — sets container height; scales back as new cards arrive -->
-      <div class="fi-ch-box-1">
+    <div class="fi-ch-hstack-wrap" id="fi-ch-hstack-wrap">
+      <div class="fi-ch-hcard" id="fi-ch-hcard-1">
+        <div class="fi-ch-hcard-num">01 / 03</div>
         <h4 class="fi-driver-title">Urban–Rural Digital Divide</h4>
         <p>Approximately 15.4% of public schools in Sabah and Sarawak lacked reliable broadband as of 2024 (MCMC 2024), constraining EdTech deployment and limiting addressable market expansion for digital operators in rural and remote regions of Malaysia.</p>
       </div>
-      <!-- Box 2: slides UP in Phase 1; peeks at top in Phase 2 -->
-      <div class="fi-ch-box-2">
+      <div class="fi-ch-hcard" id="fi-ch-hcard-2">
+        <div class="fi-ch-hcard-num">02 / 03</div>
         <h4 class="fi-driver-title">Teacher Shortage &amp; Supply Constraints</h4>
         <p>The Ministry of Education reported a shortage of approximately 12,000 qualified secondary teachers in 2024. IPG Malaysia produced approximately 10,400 graduates annually — insufficient to close the supply gap, intensifying competition for qualified educators across public and private institutions.</p>
       </div>
-      <!-- Box 3: slides UP in Phase 2; becomes the top card -->
-      <div class="fi-ch-box-3">
+      <div class="fi-ch-hcard" id="fi-ch-hcard-3">
+        <div class="fi-ch-hcard-num">03 / 03</div>
         <h4 class="fi-driver-title">Regulatory Complexity in Private &amp; International School Licensing</h4>
         <p>BPSS private school licensing timelines of 12–24 months and mandatory ministerial approval for annual fee revisions exceeding 10% per annum introduce structural barriers to market entry. Foreign education groups face compounding compliance requirements across curriculum approval, teacher credentialling, and building standards — constraining the pace of premium school expansion across Malaysia's key urban corridors.</p>
       </div>
     </div>
 
-    <!-- Dot indicators: show which card is on top -->
-    <div class="fi-ch-counter">
-      <span class="fi-ch-dot fi-ch-dot-active" id="fi-dot-1"></span>
-      <span class="fi-ch-dot" id="fi-dot-2"></span>
-      <span class="fi-ch-dot" id="fi-dot-3"></span>
+    <div class="fi-ch-controls">
+      <button class="fi-opp-arrow fi-opp-arrow-prev" id="fi-ch-prev" aria-label="Previous Challenge">‹</button>
+      <div class="fi-opp-hdots" id="fi-ch-hdots">
+        <span class="fi-opp-hdot" id="fi-ch-hdot-1"></span>
+        <span class="fi-opp-hdot" id="fi-ch-hdot-2"></span>
+        <span class="fi-opp-hdot" id="fi-ch-hdot-3"></span>
+      </div>
+      <button class="fi-opp-arrow fi-opp-arrow-next" id="fi-ch-next" aria-label="Next Challenge">›</button>
     </div>
   </div>
 
@@ -327,14 +313,13 @@
     </div>
   </div>
 
-  <!-- ══ H. RESEARCH METHODOLOGY — 3-phase card design (#4) ════ -->
+  <!-- ══ H. RESEARCH METHODOLOGY ════════════════════════════ -->
   <div class="fi-section-card">
     <h3 class="fi-sub-title">Research Methodology</h3>
 
     <div class="fi-method-wrap">
-      <!-- Phase stepper tabs -->
       <div class="fi-phase-tabs">
-        <button class="fi-phase-tab" onclick="fiPhaseTab(this, 0)">
+        <button class="fi-phase-tab fi-phase-active" onclick="fiPhaseTab(this, 0)">
           <span class="fi-phase-num-badge">01</span>
           <span>Desk Research</span>
         </button>
@@ -350,9 +335,8 @@
         </button>
       </div>
 
-      <!-- Phase cards — 3 always visible, tab highlights active card -->
       <div class="fi-phase-cards">
-        <div class="fi-phase-card" id="fi-phcard-0">
+        <div class="fi-phase-card fi-phase-card-active" id="fi-phcard-0">
           <div class="fi-phase-card-head">
             <div class="fi-phase-icon">🔍</div>
             <h4>Identification of Key Variables</h4>
@@ -392,12 +376,12 @@
     </div>
   </div>
 
-
 </div><!-- /fi-report-wrap -->
+
 <script>
 window.fiChartData = {
   marketSize: {
-    labels:  ['2018','2021','2022','2023','2024','2025E','2026F','2027F','2028F','2029F','2030F'],
+    labels:  ['2025','2026','2027','2028','2029','2030','2031','2032','2033','2034','2035'],
     revenue: [4.7, 4.4, 4.9, 5.5, 6.2, 6.8, 7.3, 7.9, 8.5, 9.2, 9.9],
     growth:  [null, -6.4, 11.4, 12.2, 12.7, 9.7, 7.4, 8.2, 7.6, 8.2, 7.6]
   },
@@ -410,8 +394,10 @@ window.fiChartData = {
     data:   [71, 12, 7, 6, 4]
   },
   competitive: {
-    labels: ["Player 1", 'Player 2', 'Player 3', 'Player 4', 'Player 5'],
+    labels: ['Taylor\'s Education Group', 'HELP Education Services', 'Beaconhouse Group', 'Axiata Group (Pandai)', 'Kumon Institute'],
     data:   [28, 22, 18, 16, 16]
   }
 };
 </script>
+</body>
+</html>
