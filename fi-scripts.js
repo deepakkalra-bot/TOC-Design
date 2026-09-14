@@ -250,9 +250,9 @@
     methodCarouselInstance = createHorizontalCarousel(
       '.fi-method-section',
       'fi-phase-hstack-wrap',
-      null,
-      null,
-      null,
+      'fi-method-prev',
+      'fi-method-next',
+      '#fi-method-hdots .fi-opp-hdot',
       '.fi-phase-tabs .fi-phase-tab'
     );
   };
