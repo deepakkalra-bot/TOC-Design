@@ -1,7 +1,8 @@
 /* ============================================================
    fi-scripts.js — Nexdigm Market Research Widget Scripts
    Prefix: fi  |  Requires: Chart.js CDN
-   Updated: Reverted back to Brand Purple Chart Palette
+   Includes: Accordions (TOC & FAQ), Carousels (Opportunities & Challenges),
+             and Chart.js Initialization
    ============================================================ */
 
 (function () {
@@ -34,6 +35,7 @@
       if (h.nextElementSibling) h.nextElementSibling.style.display = 'block';
     });
   };
+
   window.fiCollapseAll = function () {
     document.querySelectorAll('.fi-ch-hdr').forEach(function (h) {
       h.classList.remove('fi-open');
@@ -53,22 +55,28 @@
   };
 
   /* ── RESEARCH METHODOLOGY TABS ───────────────────────────── */
+  var methodCarouselInstance = null;
+
   window.fiPhaseTab = function (btn, index) {
-    document.querySelectorAll('.fi-phase-tab').forEach(function (t, i) {
-      t.classList.toggle('fi-phase-active', i === index);
-    });
-    document.querySelectorAll('.fi-phase-card').forEach(function (c, i) {
-      c.classList.toggle('fi-phase-card-active', i === index);
-    });
+    if (methodCarouselInstance && methodCarouselInstance.goToCard) {
+      methodCarouselInstance.goToCard(index);
+    } else {
+      document.querySelectorAll('.fi-phase-tab').forEach(function (t, i) {
+        t.classList.toggle('fi-phase-active', i === index);
+      });
+      document.querySelectorAll('.fi-phase-card').forEach(function (c, i) {
+        c.classList.toggle('fi-phase-card-active', i === index);
+      });
+    }
   };
 
   /* ── GENERIC HORIZONTAL CAROUSEL HELPER ───────────────────── */
-  function createHorizontalCarousel(sectionSel, wrapId, prevId, nextId, dotsSel) {
+  function createHorizontalCarousel(sectionSel, wrapId, prevId, nextId, dotsSel, tabsSel) {
     var section = document.querySelector(sectionSel);
     var wrap    = document.getElementById(wrapId);
     if (!section || !wrap) return;
 
-    var cards = wrap.querySelectorAll('.fi-opp-hcard, .fi-ch-hcard');
+    var cards = wrap.querySelectorAll('.fi-opp-hcard, .fi-ch-hcard, .fi-phase-card');
     var total = cards.length;
     if (total === 0) return;
 
@@ -115,11 +123,21 @@
         card.style.opacity   = op;
       });
 
-      var dotIdx = gp >= 1 ? total - 1 : (pp >= 0.5 ? phase + 1 : phase);
-      document.querySelectorAll(dotsSel).forEach(function (d, i) {
-        d.classList.toggle('fi-opp-hdot-active', i === dotIdx);
-        d.classList.toggle('fi-ch-hdot-active', i === dotIdx);
-      });
+      var activeIdx = gp >= 1 ? total - 1 : (pp >= 0.5 ? phase + 1 : phase);
+      if (dotsSel) {
+        document.querySelectorAll(dotsSel).forEach(function (d, i) {
+          d.classList.toggle('fi-opp-hdot-active', i === activeIdx);
+          d.classList.toggle('fi-ch-hdot-active', i === activeIdx);
+        });
+      }
+      if (tabsSel) {
+        document.querySelectorAll(tabsSel).forEach(function (t, i) {
+          t.classList.toggle('fi-phase-active', i === activeIdx);
+        });
+        cards.forEach(function (c, i) {
+          c.classList.toggle('fi-phase-card-active', i === activeIdx);
+        });
+      }
     }
 
     function animateToProgress(targetP) {
@@ -169,17 +187,30 @@
     section.addEventListener('mouseenter', function () { isHovered = true; });
     section.addEventListener('mouseleave', function () { isHovered = false; });
 
-    var dots = document.querySelectorAll(dotsSel);
-    dots.forEach(function (d, i) {
-      d.addEventListener('click', function (e) {
-        e.preventDefault();
-        goToCard(i);
-        startAutoScroll();
+    if (dotsSel) {
+      var dots = document.querySelectorAll(dotsSel);
+      dots.forEach(function (d, i) {
+        d.addEventListener('click', function (e) {
+          e.preventDefault();
+          goToCard(i);
+          startAutoScroll();
+        });
       });
-    });
+    }
 
-    var prevBtn = document.getElementById(prevId);
-    var nextBtn = document.getElementById(nextId);
+    if (tabsSel) {
+      var tabs = document.querySelectorAll(tabsSel);
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function (e) {
+          e.preventDefault();
+          goToCard(i);
+          startAutoScroll();
+        });
+      });
+    }
+
+    var prevBtn = prevId ? document.getElementById(prevId) : null;
+    var nextBtn = nextId ? document.getElementById(nextId) : null;
 
     if (prevBtn) {
       prevBtn.addEventListener('click', function (e) {
@@ -202,6 +233,8 @@
     window.addEventListener('resize', initHeight);
     render(0);
     startAutoScroll();
+
+    return { goToCard: goToCard };
   }
 
   /* ── INITIALIZE CAROUSELS ────────────────────────────────── */
@@ -213,20 +246,24 @@
     createHorizontalCarousel('.fi-challenge-section', 'fi-ch-hstack-wrap', 'fi-ch-prev', 'fi-ch-next', '#fi-ch-hdots .fi-opp-hdot');
   };
 
+  window.fiInitMethodHStack = function () {
+    methodCarouselInstance = createHorizontalCarousel(
+      '.fi-method-section',
+      'fi-phase-hstack-wrap',
+      null,
+      null,
+      null,
+      '.fi-phase-tabs .fi-phase-tab'
+    );
+  };
+
   /* ── CHARTS — Nexdigm Brand Color Palette ────────────────── */
   window.fiInitCharts = function () {
     var noNumTip = { callbacks: { label: function (c) { return '  ' + c.label; } } };
 
-    /* Brand Donut Color Palette:
-       1. Nexdigm Purple (#4012A6)
-       2. Nexdigm Magenta Tint (#C86AA9)
-       3. Vivid Orange (#F0AA31)
-       4. Dark Teal (#26AD8B)
-       5. Laurel Green (#2D7D3E)
-    */
     var brandPalette = ['#4012A6', '#C86AA9', '#F0AA31', '#26AD8B', '#2D7D3E'];
 
-    /* Chart 0 — Market Size Bar + Line (Solid Brand Purple #4012A6 & Soft Purple Tint #9F91C6) */
+    /* Chart 0 — Market Size Bar + Line */
     (function () {
       var el = document.getElementById('fi-chartMarketSize');
       if (!el) return;
@@ -242,7 +279,6 @@
             {
               label: 'Market Revenue',
               data: revenue,
-              /* Solid Nexdigm Purple (#4012A6) for historical, Soft Purple Tint (#9F91C6) for forecast */
               backgroundColor: labels.map(function(l, i) {
                 return i <= 5 ? '#4012A6' : '#9F91C6';
               }),
@@ -343,6 +379,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     if (typeof window.fiInitOppHStack === 'function') window.fiInitOppHStack();
     if (typeof window.fiInitChallengeHStack === 'function') window.fiInitChallengeHStack();
+    if (typeof window.fiInitMethodHStack === 'function') window.fiInitMethodHStack();
     if (typeof window.fiInitCharts === 'function') window.fiInitCharts();
   });
 
